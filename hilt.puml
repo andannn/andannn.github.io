@@ -1,0 +1,63 @@
+@startuml
+
+interface GeneratedComponentManager<T> {
+  T generatedComponent();
+}
+
+interface GeneratedComponentManagerHolder {
+    public GeneratedComponentManager<?> componentManager();
+}
+
+class ApplicationComponentManager
+
+GeneratedComponentManager <|-- GeneratedComponentManagerHolder
+GeneratedComponentManagerHolder <|-- Hilt_MyApplication
+GeneratedComponentManager <|-- ApplicationComponentManager
+ApplicationComponentManager --o Hilt_MyApplication
+
+class MyApplication
+class MyActivity
+
+abstract class Hilt_MyApplication {
+  void  hiltInternalInject()
+  Object generatedComponent()
+}
+
+note left of Hilt_MyApplication : Type of object is **SingletonC** defined in MyApplication_HiltComponents.java
+
+abstract class Hilt_MyActivity {
+    inject()
+    Object generatedComponent()
+}
+note right of Hilt_MyActivity : Type of object is **ActivityRetainedC** defined in MyApplication_HiltComponents.java \n inject() will be called when activity context available.
+
+Hilt_MyApplication <-- MyApplication
+Hilt_MyActivity <|-- MyActivity
+
+class ActivityComponentManager {
+    Object generatedComponent()
+}
+GeneratedComponentManager <|-- ActivityComponentManager
+
+ActivityComponentManager --o Hilt_MyActivity
+GeneratedComponentManagerHolder <|-- Hilt_MyActivity
+
+interface ActivityRetainedComponent
+
+class ActivityRetainedComponentManager<ActivityRetainedComponent> {
+    ActivityRetainedComponent generatedComponent()
+    ViewModelProvider getViewModelProvider(ViewModelStoreOwner owner, Context context)
+}
+ActivityRetainedComponent -- ActivityRetainedComponentViewModel
+ActivityRetainedComponentViewModel -- ActivityRetainedComponentManager
+class ActivityRetainedComponentViewModel {
+    ActivityRetainedComponent getComponent();
+}
+
+note right of ActivityRetainedComponentViewModel: `ActivityRetainedComponent` is stored in ViewModel which is managed by MyActivity.
+
+GeneratedComponentManager <|-- ActivityRetainedComponentManager
+ActivityRetainedComponentManager --o ActivityComponentManager
+
+
+@enduml
