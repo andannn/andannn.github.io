@@ -70,8 +70,6 @@ public actual fun <T> (suspend () -> T).createCoroutineUnintercepted(
 
 疑问2：单步进入create函数，调用了SuspendLambda的init方法。`BaseContinuationImpl`实现类在哪？
 
-<init>:159, SuspendLambda (kotlin.coroutines.jvm.internal)
-
 ```kotlin
 internal abstract class SuspendLambda(
     public override val arity: Int,
