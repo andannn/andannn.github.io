@@ -143,6 +143,9 @@ suspend函数的不是表面看着的那样，当`suspendCoroutineUninterceptedO
 > 介绍了suspend lambda的真是面貌
 > 在resumeWith->invokeSuspend过程，会管理一个flag， 并在恢复执行时根据这个flag选择恢复的位置。
 > 这件事在代码中看不到， 可能在编译器代码里能找到吧。。。
+> 
+> [KotlinConf 2017 - Deep Dive into Coroutines on JVM by Roman Elizarov 7:40](https://www.youtube.com/watch?v=YrrUCSi72E8)
+> 也提到了这件事。
 
 kotlin-stdlib-1.9.21-sources.jar!/commonMain/kotlin/coroutines/Continuation.kt
 
@@ -219,6 +222,64 @@ kotlin-stdlib-1.9.21-sources.jar!/jvmMain/kotlin/coroutines/SafeContinuationJvm.
                     completion.resumeWith(outcome)
                     return
                 }
+            }
+        }
+    }
+```
+
+### 协程的拦截器
+拦截器在Okhttp中很常用， 可以获取当前的请求或这结果， 做一些额外的处理， 协程的拦截器也是同样的。
+> [KotlinConf 2017 - Deep Dive into Coroutines on JVM by Roman Elizarov 20:40](https://www.youtube.com/watch?v=YrrUCSi72E8)
+> 提到了在当初设计协程时时没有CoroutineContext的。为了解决协程恢复执行时， 在哪个线程执行的问题， 加了这个CoroutineContext的设计。
+>
+
+ContinuationImpl中有一个intercepted方法，他从CoroutineContext取得ContinuationInterceptor， 调用`interceptContinuation`来获取有拦截处理的`Continuation`。
+
+
+kotlin-stdlib-1.9.21-sources.jar!/jvmMain/kotlin/coroutines/jvm/internal/ContinuationImpl.kt
+```kotlin
+    public fun intercepted(): Continuation<Any?> =
+        intercepted
+            ?: (context[ContinuationInterceptor]?.interceptContinuation(this) ?: this)
+                .also { intercepted = it }
+```
+
+在协程创建时， `SafeContinuation`的代理对象就是拦截后的`Continuation`。
+
+kotlin-stdlib-1.9.21-sources.jar!/commonMain/kotlin/coroutines/Continuation.kt
+```kotlin
+public fun <T> (suspend () -> T).createCoroutine(
+    completion: Continuation<T>
+): Continuation<Unit> =
+    SafeContinuation(createCoroutineUnintercepted(completion).intercepted(), COROUTINE_SUSPENDED)
+```
+
+`suspendCoroutine`函数中， `SafeContinuation`的代理对象也是拦截后的`Continuation`。
+kotlin-stdlib-1.9.21-sources.jar!/commonMain/kotlin/coroutines/Continuation.kt
+```kotlin
+public suspend inline fun <T> suspendCoroutine(crossinline block: (Continuation<T>) -> Unit): T {
+    contract { callsInPlace(block, InvocationKind.EXACTLY_ONCE) }
+    return suspendCoroutineUninterceptedOrReturn { c: Continuation<T> ->
+        val safe = SafeContinuation(c.intercepted())
+        block(safe)
+        safe.getOrThrow()
+    }
+}
+```
+
+需要注意的是，不是每个suspend函数都会触发拦截， 只有挂起的情况下， 走`resumeWith`时才会调用`delegate.resumeWith(result)` 走到拦截器的地方。
+
+```kotlin
+    public actual override fun resumeWith(result: Result<T>) {
+        while (true) { // lock-free loop
+            val cur = this.result // atomic read
+            when {
+                cur === UNDECIDED -> if (RESULT.compareAndSet(this, UNDECIDED, result.value)) return
+                cur === COROUTINE_SUSPENDED -> if (RESULT.compareAndSet(this, COROUTINE_SUSPENDED, RESUMED)) {
+                    delegate.resumeWith(result) *
+                    return
+                }
+                else -> throw IllegalStateException("Already resumed")
             }
         }
     }
