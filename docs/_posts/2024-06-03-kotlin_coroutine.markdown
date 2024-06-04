@@ -139,6 +139,11 @@ suspend函数的不是表面看着的那样，当`suspendCoroutineUninterceptedO
 再次回到我们写的suspend lambda中，
 但是我不能理解的是， 这个调用直接调到了`我们写的suspend lambda`的`foo`函数之后的地方， 这肯定是理想的情况， 但是如何做到的， 我想不通。
 
+> [benny huo 深入理解协程的状态转移](https://www.bennyhuo.com/2019/05/07/coroutine-suspend/#4-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E5%8D%8F%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB)
+> 介绍了suspend lambda的真是面貌
+> 在resumeWith->invokeSuspend过程，会管理一个flag， 并在恢复执行时根据这个flag选择恢复的位置。
+> 这件事在代码中看不到， 可能在编译器代码里能找到吧。。。
+
 kotlin-stdlib-1.9.21-sources.jar!/commonMain/kotlin/coroutines/Continuation.kt
 
 ```kotlin
