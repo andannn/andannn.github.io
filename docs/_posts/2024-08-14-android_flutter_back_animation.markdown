@@ -60,18 +60,8 @@ https://docs.flutter.dev/release/breaking-changes/android-predictive-back
 
 3.19版本新增了`PopScope`来适配Android 14的Predictive back design。
 
-```dart
-PopScope
-(
-canPop: _myPopDisableEnableLogic(),
-onPopInvoked: (bool didPop) {
-// Handle the pop. If `didPop` is false, it was blocked.
-},
-)
-```
-
-PopScope控件会在当前页面注册一个PopEntry, 当页面里所有注册的`PopEntry`的都为true时， 才可以返回上一个页面,
-只要有一个`popEntry.canPopNotifier`为false，就会阻止页面返回。
+PopScope控件会在当前页面注册一个PopEntry, 当页面里所有注册的`PopEntry`的`canPop`都为true时， 才可以返回上一个页面,
+只要有一个`canPop`为false，就会阻止页面返回。
 
 相关代码：
 
