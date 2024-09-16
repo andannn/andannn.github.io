@@ -1,5 +1,4 @@
 import getSortedPostsdata from '@/lib/posts'
-import React, { useEffect } from 'react'
 
 export default function Posts() {
     const posts = getSortedPostsdata()
