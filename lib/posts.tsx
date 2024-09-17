@@ -25,7 +25,6 @@ export async function getPostById(id: string): Promise<BlogPostWithHtml | undefi
         .use(html)
         .process(post.content);
 
-    console.log(processedContent)
     const contentHtml = processedContent.toString()
     return {
         ...post,
