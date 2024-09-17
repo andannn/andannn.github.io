@@ -4,3 +4,5 @@ type BlogPost = {
     date: Date
     content: string
 }
+
+type BlogPostWithHtml = BlogPost & { contentHtml: string }
