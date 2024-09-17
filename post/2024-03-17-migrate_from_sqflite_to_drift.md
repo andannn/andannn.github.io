@@ -2,6 +2,7 @@
 layout: post
 title:  "Flutter中从Sqflite迁移到Drift（1）"
 date:   2024-03-12 20:06:18 +0900
+tag: "Flutter|Drift|Database"
 ---
 
 作为一个Android出身的Flutter初学者， 我学习flutter的方式是是Flutter pub中寻找与Android中相同功能的库。

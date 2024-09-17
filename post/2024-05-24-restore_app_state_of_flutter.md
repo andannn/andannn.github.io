@@ -2,6 +2,7 @@
 layout: post
 title:  "Flutter实现app被系统回收后恢复状态"
 date:   2024-05-24 14:59:18 +0800
+tag: "Flutter"
 ---
 
 Android里的状态管理相对说比较复杂，按生命周期从短到长分为以下几种：

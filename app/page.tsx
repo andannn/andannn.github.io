@@ -1,5 +1,5 @@
 import PostList from "./components/PostList";
-import TagArea from "./components/TagArea";
+import AllTagArea from "./components/AllTagArea";
 
 export default function Home() {
   return (
@@ -7,7 +7,7 @@ export default function Home() {
       <p className="mt-12 mb-12 text-3xl text-center dark:text-white">
       </p>
 
-      <TagArea />
+      <AllTagArea />
       <PostList />
     </main>
   );

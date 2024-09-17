@@ -2,6 +2,7 @@
 layout: post
 title:  "Flutter中从Sqflite迁移到Drift（2）"
 date:   2024-03-25 10:04:08 +0900
+tag: "Flutter|Drift|Database"
 ---
 
 Drift的库可以用非常少的代码量来做到SQLite的数据库操作。

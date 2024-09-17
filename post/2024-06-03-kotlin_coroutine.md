@@ -2,6 +2,7 @@
 layout: post
 title:  "记录一下学习kotlin协程的过程"
 date:   2024-06-03 10:53:28 +0800
+tag: "Kotlin"
 ---
 
 ### suspend关键字

@@ -7,3 +7,8 @@ type BlogPost = {
 }
 
 type BlogPostWithHtml = BlogPost & { contentHtml: string }
+
+type TagWithCount = {
+    tag: string
+    count: number
+}

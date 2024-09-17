@@ -2,6 +2,7 @@
 layout: post
 title:  "Android 中的网络请求"
 date:   2024-03-18 10:06:18 +0900
+tag: "Android"
 ---
 
 Android这么多年来app的架构是一直在改善的， 如果架构比较古老， 在项目迭代的时候绝对是一件非常痛苦的事情。

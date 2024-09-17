@@ -38,8 +38,8 @@ function getBlogPost(fileName: string): BlogPost {
 
     const matterResult = matter(fileContents)
 
-    const tagString = matterResult.data['tag'] as string
-    const tags = tagString.split('|')
+    const tagString = matterResult.data['tag'] as string | undefined
+    const tags = tagString?.split('|') ?? []
     const post: BlogPost = {
         id: fileName.replace(/\.md$/, ''),
         title: matterResult.data['title'],

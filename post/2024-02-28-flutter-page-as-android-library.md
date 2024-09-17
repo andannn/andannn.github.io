@@ -2,6 +2,7 @@
 layout: post
 title:  "添加Flutter fragment到已有的Actvity中"
 date:   2024-02-28 21:06:08 +0900
+tag: "Flutter"
 ---
 
 最近在研究flutter最为android library集成到Android工程的课题。

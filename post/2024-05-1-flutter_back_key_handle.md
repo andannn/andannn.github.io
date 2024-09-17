@@ -2,6 +2,7 @@
 layout: post
 title:  "Flutter 处理Android端的back key的方式"
 date:   2024-05-01 11:36:18 +0800
+tag: "Flutter|Android"
 ---
 
 Android端保留了物理返回键，一般来说， 物理返回键是最优先的，不论页面在loading， 还是error状态， 都不能

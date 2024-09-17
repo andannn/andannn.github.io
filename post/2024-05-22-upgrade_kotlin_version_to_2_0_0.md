@@ -2,6 +2,7 @@
 layout: post
 title:  "升级Kotlin到2.0.0"
 date:   2024-05-22 10:59:18 +0800
+tag: "Kotlin"
 ---
 
 kotlin 终于发布了2.0.0稳定版， 记录一下升级过程。

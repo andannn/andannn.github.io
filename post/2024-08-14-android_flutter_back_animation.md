@@ -2,6 +2,7 @@
 layout: post
 title: "Android 14 Predictive back design"
 date: 2024-06-03 10:53:28 +0800
+tag: "Android"
 ---
 
 ### Android中back key的分发机制
