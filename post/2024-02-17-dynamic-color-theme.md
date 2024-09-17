@@ -2,6 +2,7 @@
 layout: post
 title:  "Android 从图片中提取颜色并应用到app theme的实现方法"
 date:   2024-02-17 16:06:08 +0900
+tag: "Android"
 ---
 [Jetcaster](https://github.com/android/compose-samples/tree/main/Jetcaster)
 中有相关的实现，

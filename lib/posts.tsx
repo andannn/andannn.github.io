@@ -33,16 +33,19 @@ export async function getPostById(id: string): Promise<BlogPostWithHtml | undefi
 }
 
 function getBlogPost(fileName: string): BlogPost {
-    const fullPath = path.join(postsDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const fullPath = path.join(postsDirectory, fileName)
+    const fileContents = fs.readFileSync(fullPath, 'utf8')
 
-    const matterResult = matter(fileContents);
+    const matterResult = matter(fileContents)
 
+    const tagString = matterResult.data['tag'] as string
+    const tags = tagString.split('|')
     const post: BlogPost = {
         id: fileName.replace(/\.md$/, ''),
         title: matterResult.data['title'],
         date: new Date(matterResult.data['date']),
-        content: matterResult.content
+        content: matterResult.content,
+        tags: tags
     }
 
     return post
