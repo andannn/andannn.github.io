@@ -1,4 +1,4 @@
-import { getSortedPostsdata, getPostById } from "./posts";
+import { getSortedPostsdata } from "./posts";
 
 test('getSortedPostsdata test', () => {
     const sortedPosts = getSortedPostsdata()
