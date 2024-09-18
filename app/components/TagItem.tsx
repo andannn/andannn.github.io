@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react'
 
 type Props = {
@@ -26,9 +27,9 @@ export default function TagItem({ tag }: Props) {
             break;
     }
    return (
-        <button className={`rounded mx-4 my-5 underline ${tagClass}`}>
+        <Link className={`rounded mx-4 my-5 underline ${tagClass}`} href={`/tags/${content}`}>
             {content}
-        </button>
+        </Link>
     );
 }
 

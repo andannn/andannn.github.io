@@ -1,11 +1,14 @@
-import { getSortedPostsdata } from '@/lib/posts'
 import PostItem from './PostItem'
 
-export default function PostList() {
-    const posts = getSortedPostsdata()
+type Props = {
+    title: string
+    posts: BlogPost[]
+}
+
+export default function PostList({title, posts} : Props) {
     return (
         <section className="mt-6 mx-auto max-w-4xl">
-            <h2 className="text-4xl font-bold dark:text-white/90">Blog</h2>
+            <h2 className="text-4xl font-bold dark:text-white/90">{title}</h2>
             <ul className="w-full">
                 {posts.map(post => {
                     return (

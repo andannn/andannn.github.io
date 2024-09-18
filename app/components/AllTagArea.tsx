@@ -4,8 +4,6 @@ import TagItem from './TagItem'
 
 type TagsOfPost = string[]
 
-
-
 export default function AllTagArea() {
     const posts = getSortedPostsdata()
     const tagWithCountList = calculateCountOfTag(posts.map(post => post.tags))

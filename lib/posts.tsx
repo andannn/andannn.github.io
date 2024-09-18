@@ -14,6 +14,13 @@ export function getSortedPostsdata() {
     return posts.sort((a, b) => a.date < b.date ? 1 : -1)
 }
 
+export function getSortedPostsByTag(tag: string) {
+    const files = fs.readdirSync(postsDirectory);
+    const posts = files.map(getBlogPost).filter(post => post.tags.includes(tag))
+
+    return posts.sort((a, b) => a.date < b.date ? 1 : -1)
+}
+
 export async function getPostById(id: string): Promise<BlogPostWithHtml | undefined> {
     const files = fs.readdirSync(postsDirectory);
 

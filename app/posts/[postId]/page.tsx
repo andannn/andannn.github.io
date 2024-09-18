@@ -43,10 +43,10 @@ export default async function page({ params }: { params: { postId: string } }) {
             </div>
             <article className='px-6 py-6 bg-slate-700 rounded-2xl'>
                 <section dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
-                <p>
-                    <Link href="/">← Back to home</Link>
-                </p>
             </article>
+            <p className='my-5 mb-20'>
+                <Link href="/">← Back to home</Link>
+            </p>
         </main>
     )
 }
