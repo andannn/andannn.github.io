@@ -34,12 +34,14 @@ export default async function page({ params }: { params: { postId: string } }) {
         return notFound()
     }
     return (
-        <main className="px-6 prose prose-xl prose-slate dark:prose-invert mx-auto">
-            <h1 className="text-3xl mt-4 mb-0">{post.title}</h1>
-            <p className="mt-0">
-                {post.date.toDateString()}
-            </p>
-            <article>
+        <main className="px-6 prose max-w-7xl prose-xl prose-slate dark:prose-invert mx-auto">
+            <div>
+                <h1 className="text-4xl mt-16 mb-0">{post.title}</h1>
+                <p className="mt-0">
+                    {post.date.toDateString()}
+                </p>
+            </div>
+            <article className='px-6 py-6 bg-emerald-700 rounded-2xl'>
                 <section dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
                 <p>
                     <Link href="/">← Back to home</Link>

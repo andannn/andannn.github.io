@@ -9,9 +9,9 @@ type TagsOfPost = string[]
 export default function AllTagArea() {
     const posts = getSortedPostsdata()
     const tagWithCountList = calculateCountOfTag(posts.map(post => post.tags))
-    console.log(tagWithCountList)
+
     return (
-        <section className="mt-6 mx-auto max-w-2xl">
+        <section className="mt-6 mx-auto max-w-4xl">
             <h2 className="text-4xl font-bold dark:text-white/90">Tag</h2>
             <div className='wrap-layout mt-6'>{
                 tagWithCountList.map(tag => {
