@@ -1,4 +1,3 @@
-import TagItem from '@/app/components/TagItem'
 import { getPostById, getSortedPostsdata } from '@/lib/posts'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
