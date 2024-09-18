@@ -10,7 +10,7 @@ export default function TagItem({ tag }: Props) {
     const level = getHighLightLevelOfTag(tag)
     const content = tag.tag
 
-    var tagClass: string;
+    let tagClass: string;
     switch (level) {
         case 'small':
             tagClass = 'text-lg text-slate-300';

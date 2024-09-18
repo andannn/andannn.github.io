@@ -1,7 +1,6 @@
 import { getSortedPostsdata } from '@/lib/posts'
 import React from 'react'
 import TagItem from './TagItem'
-import { count } from 'console'
 
 type TagsOfPost = string[]
 
@@ -16,7 +15,7 @@ export default function AllTagArea() {
             <h2 className="text-4xl font-bold dark:text-white/90">Tag</h2>
             <div className='wrap-layout mt-6'>{
                 tagWithCountList.map(tag => {
-                    return <TagItem tag={tag} />
+                    return <TagItem tag={tag} key={tag.tag} />
                 })
             }</div>
         </section>
