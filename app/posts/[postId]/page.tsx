@@ -1,3 +1,4 @@
+import TagItem from '@/app/components/TagItem'
 import { getPostById, getSortedPostsdata } from '@/lib/posts'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -34,14 +35,14 @@ export default async function page({ params }: { params: { postId: string } }) {
         return notFound()
     }
     return (
-        <main className="px-6 prose max-w-7xl prose-xl prose-slate dark:prose-invert mx-auto">
+        <main className="px-6 prose max-w-4xl prose-xl prose-slate dark:prose-invert mx-auto">
             <div>
                 <h1 className="text-4xl mt-16 mb-0">{post.title}</h1>
                 <p className="mt-0">
                     {post.date.toDateString()}
                 </p>
             </div>
-            <article className='px-6 py-6 bg-slate-700 rounded-2xl'>
+            <article className='text-base leading-loose px-6 py-6 bg-slate-700 rounded-2xl'>
                 <section dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
             </article>
             <p className='my-5 mb-20'>
