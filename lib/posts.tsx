@@ -3,6 +3,7 @@ import fs from 'fs';
 import matter from "gray-matter";
 import html from 'remark-html'
 import { remark } from 'remark'
+import remarkGfm from "remark-gfm";
 
 const postsDirectory = path.join(process.cwd(), 'post')
 
@@ -23,6 +24,7 @@ export async function getPostById(id: string): Promise<BlogPostWithHtml | undefi
     const post = getBlogPost(findResult)
     const processedContent = await remark()
         .use(html)
+        .use(remarkGfm)
         .process(post.content);
 
     const contentHtml = processedContent.toString()
