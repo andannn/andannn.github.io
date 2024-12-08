@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Comopose Snack bar的实现方式"
+title: "Room 源代码"
 date: 2024-12-04 15:42:48 +0800
-tag: "Compose|Android|Kotlin|KMP"
+tag: "Android|Kotlin|KMP"
 ---
 
 Androidx的库有一些被迁移到了KMP， 例如Room， Navigation， ViewModel。
