@@ -1,19 +1,17 @@
 ---
 layout: post
-title: "比较Kotlin 与 Dart 与本地（Native）的通信"
+title: "比较Kotlin/Dart 与本地（Native）API的互调用方式"
 date: 2024-12-17 15:42:48 +0800
 tag: "Android|Kotlin|KMP|Dart|Flutter"
 ---
 
-最近准备开始了解一下Kotlin和Dart跨平台实现方式。
+最近准备开始一下Kotlin和Dart跨平台实现方式。
 
 Kotlin最开始可以和Java无缝互调用， 在Android平台崭露头角，
 成为Google首推的Android平台开发语言。Kotlin代码可以编译成java字节码，在JVM虚拟机中运行，在JAVA和Kotlin共存的工程中，Kotlin代码可以直接被Java调用， Java代码也可以直接被Kotlin调用， 工程的迁移成本和开发体验都很好。
-Kotlin Multiplatform可以看作KotlinJvm的扩展，Kotlin Native编译产物是平台的的可执行文件，KotlinJs会编译生成JS代码。
+Kotlin Multiplatform可以看作KotlinJvm的扩展，Kotlin Native编译产物是平台的的可执行文件，KotlinJs会编译生成JS代码. KMP的模式是更原生的，因为编译产物和原生平台是一模一样的。
 
 而Dart的做法不太一样， Dart的编译产物不是可执行文件， 而是目标平台的机器码， 比如Android和iOS都是Arm64平台的架构， 而Android的app是需要有Darvik虚拟机的运行时支持的， 运行的是JAVA字节码，iOS则可以直接运行Native机器码。但是在dart眼里都是一样的，flutter app在Android和iOS中都会生成一样的ARM原生机器码。
-
-KMP的模式是更`原生`的， 因为编译产物和原生平台是一模一样的。
 
 还有就是工程的组建方式有很大区别。
 这一点我们通过实际的项目来看， 最近在看Room的源码， 它依赖AndroidX的另一个库（[Sqlite](https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:sqlite/)）， Flutter上与之对应的是[Sqlite3](https://github.com/simolus3/sqlite3.dart)。
