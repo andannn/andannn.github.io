@@ -151,3 +151,279 @@ public final class Foo {
 Foo.bar$default(new Foo(), "para1", (String)null, (String)null, 6, (Object)null);
 ```
 
+### data class
+
+Kotlin的数据类会生成以下方法。
+
+`Foo(String var1, String var2, int var3, DefaultConstructorMarker var4)` 额外的构造函数， 用来做函数重载
+
+`toString`
+
+`copy`
+
+`copy$default` 函数重载用
+
+`equals`
+
+`componentN` 解构语法用
+
+```kotlin
+data class Foo(
+    val para1: String,
+    val para2: String = "",
+)
+
+// deconstruct
+val (a, b) = Foo("")
+```
+
+Decompiled Java ByteCode
+
+```java
+public final class Foo {
+   @NotNull
+   private final String para1;
+   @NotNull
+   private final String para2;
+   public static final int $stable;
+
+...
+
+   @NotNull
+   public final String component1() {
+      return this.para1;
+   }
+
+   @NotNull
+   public final String component2() {
+      return this.para2;
+   }
+
+   @NotNull
+   public final Foo copy(@NotNull String para1, @NotNull String para2) {
+..
+      return new Foo(para1, para2);
+   }
+
+   // $FF: synthetic method
+   public static Foo copy$default(Foo var0, String var1, String var2, int var3, Object var4) {
+      if ((var3 & 1) != 0) {
+         var1 = var0.para1;
+      }
+
+      if ((var3 & 2) != 0) {
+         var2 = var0.para2;
+      }
+
+      return var0.copy(var1, var2);
+   }
+
+   @NotNull
+   public String toString() {
+      return "Foo(para1=" + this.para1 + ", para2=" + this.para2 + ')';
+   }
+
+   public int hashCode() {
+      int result = this.para1.hashCode();
+      result = result * 31 + this.para2.hashCode();
+      return result;
+   }
+
+   public boolean equals(@Nullable Object other) {
+...
+   }
+}
+
+// deconstruct
+      Foo var0 = new Foo("", (String)null, 2, (DefaultConstructorMarker)null);
+      String a = var0.component1();
+      String b = var0.component2();
+```
+
+
+### extension function
+Kotlin中带有Reciver的扩展函数本质上是一个静态函数， 函数的第一个参数是该Reciver。
+
+``` kotlin
+class Foo {
+}
+
+fun Foo.extension() {
+
+}
+```
+
+``` java
+   public static final void extension(@NotNull Foo $this$extension) {
+      Intrinsics.checkNotNullParameter($this$extension, "<this>");
+   }
+```
+
+### inline function
+可以看到如果用inline修饰函数， block里的内容就被展开到调用方。
+如果没有inline， 就是正常的函数调用（传入一个lambda）
+
+```kotlin
+class Foo {
+    inline fun bar(block: () -> Unit) {
+        block()
+    }
+}
+
+fun main() {
+    val foo = Foo()
+    foo.bar {
+        println("hello")
+    }
+}
+```
+
+with inline
+```java
+   public static final void main() {
+      Foo foo = new Foo();
+      int $i$f$bar = false;
+      int var3 = false;
+      String var4 = "hello";
+      System.out.println(var4);
+   }
+```
+
+without inline
+```java
+   public static final void main() {
+      Foo foo = new Foo();
+      foo.bar(TestKt::main$lambda$0);
+   }
+
+   private static final Unit main$lambda$0() {
+      String var0 = "hello";
+      System.out.println(var0);
+      return Unit.INSTANCE;
+   }
+```
+
+### companion 
+companion object 本质上是一个静态的内部类， 他的名字默认是Companion， 如果这样声明， `companion object A`， 则生成的内部类的名字是A。
+
+`Foo` 有一个静态的成员`Companion`，用类名来引用的时候都是引用的这个静态成员`Companion`
+
+由于是一个内部类，伴生对象还可以实现接口，语法如下
+
+`companion object A: Interface`
+
+生成的内部类为
+
+`public static final class A implements Interface`
+    
+
+```kotlin
+class Foo {
+    companion object {
+        
+    }
+}
+```
+
+```java
+public final class Foo {
+   @NotNull
+   public static final Companion Companion = new Companion((DefaultConstructorMarker)null);
+
+   public static final class Companion {
+      private Companion() {
+      }
+
+      // $FF: synthetic method
+      public Companion(DefaultConstructorMarker $constructor_marker) {
+         this();
+      }
+   }
+}
+```
+
+
+#### Delegation﻿
+
+1. 类代理
+
+代理的类会生成一个私有成员$$delegate_0，它在构造函数中初始化。
+并且重写所有的接口方法， 默认实现是直接调用这个类的对应方法。
+
+```kotlin
+interface Base {
+    fun print()
+}
+
+class BaseImpl(val x: Int) : Base {
+    override fun print() { print(x) }
+}
+
+class Derived(b: Base) : Base by b
+```
+
+```java
+public final class Derived implements Base {
+   // $FF: synthetic field
+   private final Base $$delegate_0;
+
+   public Derived(@NotNull Base b) {
+      Intrinsics.checkNotNullParameter(b, "b");
+      super();
+      this.$$delegate_0 = b;
+   }
+
+   public void print() {
+      this.$$delegate_0.print();
+   }
+```
+
+2. 值代理
+
+值的代理对象是一个私有成员变量`p$delegate`， 在生成的Getter/Setter方法中
+调用这个代理对象的getter/setter方法
+。
+
+代理的getter/setter有一个`property: KProperty<*>`参数， 这个是别代理的成员的
+类型。 可以看到这个值是从$$delegatedProperties取得的
+
+```kotlin
+class Example {
+    var p: String by Delegate()
+}
+
+class Delegate {
+    operator fun getValue(thisRef: Any?, property: KProperty<*>): String {
+        return "$thisRef, thank you for delegating '${property.name}' to me!"
+    }
+
+    operator fun setValue(thisRef: Any?, property: KProperty<*>, value: String) {
+        println("$value has been assigned to '${property.name}' in $thisRef.")
+    }
+}
+```
+
+```java
+public final class Example {
+   // $FF: synthetic field
+   static final KProperty[] $$delegatedProperties;
+   @NotNull
+   private final Delegate p$delegate = new Delegate();
+   public static final int $stable;
+
+   @NotNull
+   public final String getP() {
+      return this.p$delegate.getValue(this, $$delegatedProperties[0]);
+   }
+
+   public final void setP(@NotNull String var1) {
+      Intrinsics.checkNotNullParameter(var1, "<set-?>");
+      this.p$delegate.setValue(this, $$delegatedProperties[0], var1);
+   }
+
+   static {
+      KProperty[] var0 = new KProperty[]{Reflection.mutableProperty1((MutablePropertyReference1)(new MutablePropertyReference1Impl(Example.class, "p", "getP()Ljava/lang/String;", 0)))};
+      $$delegatedProperties = var0;
+   }
+}
+```
