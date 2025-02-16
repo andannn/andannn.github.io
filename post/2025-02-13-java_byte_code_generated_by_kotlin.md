@@ -343,7 +343,7 @@ public final class Foo {
 ```
 
 
-#### Delegation﻿
+#### Delegation
 
 1. 类代理
 
@@ -426,4 +426,209 @@ public final class Example {
       $$delegatedProperties = var0;
    }
 }
+```
+
+#### suspend
+
+```kotlin
+class Example {
+    suspend fun foo() {
+        aaa()
+        bbb()
+    }
+
+    suspend fun aaa(): String {
+        return ""
+    }
+
+    suspend fun bbb() {
+
+    }
+}
+```
+
+首先看生成的函数`aaa`，
+kotlin中定义的返回值是`String`，
+生成的java字节码的返回值是Object， 并且多了一个参数`Continuation`。
+说明suspend函数都隐藏了一个Continuation参数， 而普通函数不能提供这个Continuation对象，所以普通函数不能直接调用suspend函数。
+
+```
+   @Nullable
+   public final Object aaa(@NotNull Continuation $completion) {
+      return "";
+   }
+```
+
+
+当一个`suspend`修饰的函数中有2个或两个以上的挂起函数时，编译器会生成一个内部类，
+用来管理挂起函数的状态。
+
+这个生成的内部类`Example$foo$1`继承了`ContinuationImpl`。
+
+`synthetic Ljava/lang/Object; result` 这个成员记录了`invokeSuspend`传入的
+参数。
+
+`I label` 一个Int变量，用来记录挂起点的位置。
+
+
+invokeSuspend函数中，取得label的值， 并把最高位置为1。
+然后调用了`Example.foo(this)`, 因为这个`Example$foo$1`是内部类，
+所以有外部类的引用， 并且foo传入的参数是内部类this实例。
+
+
+```
+final class kotlinx/serialization/Example$foo$1 extends kotlin/coroutines/jvm/internal/ContinuationImpl {
+
+  // compiled from: Test.kt
+  OUTERCLASS kotlinx/serialization/Example foo (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+
+  @Lkotlin/Metadata;(mv={2, 1, 0}, k=3, xi=50)
+  // access flags 0x18
+  final static INNERCLASS kotlinx/serialization/Example$foo$1 null null
+
+  // access flags 0x0
+  Ljava/lang/Object; L$0
+
+  // access flags 0x1000
+  synthetic Ljava/lang/Object; result
+
+  // access flags 0x1010
+  final synthetic Lkotlinx/serialization/Example; this$0
+
+  // access flags 0x0
+  I label
+
+  // access flags 0x0
+  // signature (Lkotlinx/serialization/Example;Lkotlin/coroutines/Continuation<-Lkotlinx/serialization/Example$foo$1;>;)V
+...
+
+  // access flags 0x11
+  public final invokeSuspend(Ljava/lang/Object;)Ljava/lang/Object;
+  @Lorg/jetbrains/annotations/Nullable;() // invisible
+    // annotable parameter count: 1 (invisible)
+    @Lorg/jetbrains/annotations/NotNull;() // invisible, parameter 0
+   L0
+    ALOAD 0
+    ALOAD 1
+    PUTFIELD kotlinx/serialization/Example$foo$1.result : Ljava/lang/Object;
+    ALOAD 0
+    ALOAD 0
+    GETFIELD kotlinx/serialization/Example$foo$1.label : I
+    LDC -2147483648
+    IOR
+    PUTFIELD kotlinx/serialization/Example$foo$1.label : I
+    ALOAD 0
+    GETFIELD kotlinx/serialization/Example$foo$1.this$0 : Lkotlinx/serialization/Example;
+    ALOAD 0
+    CHECKCAST kotlin/coroutines/Continuation
+    INVOKEVIRTUAL kotlinx/serialization/Example.foo (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+    ARETURN
+   L1
+    LOCALVARIABLE this Lkotlinx/serialization/Example$foo$1; L0 L1 0
+    LOCALVARIABLE $result Ljava/lang/Object; L0 L1 1
+    MAXSTACK = 3
+    MAXLOCALS = 2
+}
+```
+
+接下来看`foo`函数的实现。
+
+首先判断传入参数`$completion`的类型是不是生成的内部类`Example$foo$1`，
+如果不是， 则初始化。如果是， 则将内部类里的`label`的最高位置0， 表明挂起函数继续运行。
+
+假设label是初始值0， 则调用挂起函数`aaa`，并判断返回值是否是挂起标志位`COROUTINE_SUSPENDED`
+如果是， 则直接返回挂起标志， 结束当前函数运行。 如果不是， 则继续执行`bbb`。
+
+如果`aaa`返回了挂起标志位， 表示`aaa`函数不能立即返回结果， 可能是需要在另一个线程上做异步， 也可能是把continuation实例保存起来了，将来调用。 不管是哪种情况。
+`aaa`函数负责调用`continuation.resume`来恢复执行。
+
+上面说过，`aaa`函数得到的`continuation`的类型是内部类`Example$foo$1`， 他继承了
+`ContinuationImpl`, `ContinuationImpl.resumeWith`的内部实现贴到下面了。
+
+resumeWith调用了`invokeSuspend`,
+他的实现就是上面的字节码，首先取得label的值， 并把最高位置为1。
+然后调用了`Example.foo(this)`, 让`foo`函数重新执行， 由于之前设置的label是1
+，函数会从`aaa`的后一行开始执行。
+
+```
+public final class Example {
+   @Nullable
+   public final Object foo(@NotNull Continuation $completion) {
+      Object $continuation;
+      label27: {
+         if ($completion instanceof Example$foo$1) {
+            $continuation = (Example$foo$1)$completion;
+            if ((((Example$foo$1)$continuation).label & Integer.MIN_VALUE) != 0) {
+               ((Example$foo$1)$continuation).label -= Integer.MIN_VALUE;
+               break label27;
+            }
+         }
+
+         $continuation = new Example$foo$1($completion);
+      }
+
+      Object $result = ((<undefinedtype>)$continuation).result;
+      Object var4 = IntrinsicsKt.getCOROUTINE_SUSPENDED();
+      switch (((<undefinedtype>)$continuation).label) {
+         case 0:
+            ResultKt.throwOnFailure($result);
+            ((<undefinedtype>)$continuation).L$0 = this;
+            ((<undefinedtype>)$continuation).label = 1;
+            if (this.aaa((Continuation)$continuation) == var4) {
+               return var4;
+            }
+            break;
+         case 1:
+            this = (Example)((<undefinedtype>)$continuation).L$0;
+            ResultKt.throwOnFailure($result);
+            break;
+         case 2:
+            ResultKt.throwOnFailure($result);
+            return Unit.INSTANCE;
+         default:
+            throw new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
+      }
+
+      ((<undefinedtype>)$continuation).L$0 = null;
+      ((<undefinedtype>)$continuation).label = 2;
+      if (this.bbb((Continuation)$continuation) == var4) {
+         return var4;
+      } else {
+         return Unit.INSTANCE;
+      }
+   }
+```
+
+```kotlin
+    public final override fun resumeWith(result: Result<Any?>) {
+        // This loop unrolls recursion in current.resumeWith(param) to make saner and shorter stack traces on resume
+        var current = this
+        var param = result
+        while (true) {
+            // Invoke "resume" debug probe on every resumed continuation, so that a debugging library infrastructure
+            // can precisely track what part of suspended callstack was already resumed
+            probeCoroutineResumed(current)
+            with(current) {
+                val completion = completion!! // fail fast when trying to resume continuation without completion
+                val outcome: Result<Any?> =
+                    try {
+                        val outcome = invokeSuspend(param)
+                        if (outcome === COROUTINE_SUSPENDED) return
+                        Result.success(outcome)
+                    } catch (exception: Throwable) {
+                        Result.failure(exception)
+                    }
+                releaseIntercepted() // this state machine instance is terminating
+                if (completion is BaseContinuationImpl) {
+                    // unrolling recursion via loop
+                    current = completion
+                    param = outcome
+                } else {
+                    // top-level completion reached -- invoke and return
+                    completion.resumeWith(outcome)
+                    return
+                }
+            }
+        }
+    }
 ```
