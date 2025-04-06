@@ -1,6 +1,6 @@
-import PostList from '@/app/components/PostList'
-import { getSortedPostsByTag, getSortedPostsdata } from '@/lib/posts'
+import { getSortedPostsByTag, getSortedPostsdata } from '@/src/lib/posts/posts'
 import React from 'react'
+import PostList from '../../components/PostList'
 
 export function generateStaticParams() {
     const posts = getSortedPostsdata()

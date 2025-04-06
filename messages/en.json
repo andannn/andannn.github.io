@@ -1,0 +1,14 @@
+{
+    "HomePage": {
+        "blog": "Blog",
+        "tag": "Tag"
+    },
+    "ResumePage": {
+        "contact": "Contact",
+        "skills": "Skills",
+        "languages": "Languages",
+        "experience": "Work Experience",
+        "projects": "Personal Projects",
+        "techStack": "Tech Stack"
+    }
+}

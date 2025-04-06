@@ -1,4 +1,4 @@
-import { getPostById, getSortedPostsdata } from '@/lib/posts'
+import { getPostById, getSortedPostsdata } from '@/src/lib/posts/posts'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import React from 'react'
