@@ -1,0 +1,14 @@
+{
+    "HomePage": {
+        "blog": "ブログ",
+        "tag": "タッグ"
+    },
+    "ResumePage": {
+        "contact": "連絡先",
+        "skills": "スキル",
+        "languages": "言語能力",
+        "experience": "職務経歴",
+        "projects": "個人プロジェクト",
+        "techStack": "技術スタック"
+    }
+}

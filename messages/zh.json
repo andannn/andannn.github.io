@@ -1,0 +1,14 @@
+{
+    "HomePage": {
+        "blog": "博客",
+        "tag": "Tag"
+    },
+    "ResumePage": {
+        "contact": "联系方式",
+        "skills": "技能",
+        "languages": "语言能力",
+        "experience": "工作经历",
+        "projects": "个人项目",
+        "techStack": "技术栈"
+    }
+}
