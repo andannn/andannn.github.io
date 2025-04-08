@@ -29,13 +29,13 @@ export default async function LocaleLayout({
         notFound();
     }
 
-    const t = await getTranslations("HomePage");
+    const t = await getTranslations({ locale: locale });
 
     return (
         <html lang={locale}>
             <body className="dark:bg-slate-800">
                 <NextIntlClientProvider>
-                    <Navbar title={'Andannn ' + t('blog')} />
+                    <Navbar title={'Andannn ' + t('HomePage.blog')} />
                     {children}
                 </NextIntlClientProvider>
             </body>
