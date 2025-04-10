@@ -2,7 +2,7 @@
 layout: post
 title: "Japanese listening"
 date: 2025-04-10 21:45:48 +0800
-tag: "Android|Kotlin|KMP"
+tag: "Japanese"
 ---
 
 |Speaking|
