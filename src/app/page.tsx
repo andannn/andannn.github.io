@@ -9,7 +9,7 @@ export default function RootRedirectPage() {
     const router = useRouter();
 
     useEffect(() => {
-        var userLang;
+        let userLang: string;
         const browserLanguage = navigator.language.split("-")[0]
         if (browserLanguage == "en" || browserLanguage == "ja" || browserLanguage == "zh") {
             userLang = browserLanguage

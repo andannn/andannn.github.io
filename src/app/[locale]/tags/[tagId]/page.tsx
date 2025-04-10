@@ -19,12 +19,12 @@ export function generateMetadata({ params }: { params: { tagId: string } }) {
     }
 }
 
-export default function TagContents({ params }: { params: { tagId: string } }) {
+export default function TagContents({ params }: { params: { tagId: string, locale: string } }) {
     const tagName = params.tagId
     const posts = getSortedPostsByTag(tagName)
     return (
         <main className="px-6 mx-auto">
-            <PostList title={`Tag: ${tagName}`} posts={posts} />
+            <PostList title={`Tag: ${tagName}`} posts={posts} locale={params.locale} />
         </main>
     )
 }
