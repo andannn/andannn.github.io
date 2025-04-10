@@ -1,5 +1,5 @@
+import { Link } from '@/src/i18n/navigation'
 import { getPostById, getSortedPostsdata } from '@/src/lib/posts/posts'
-import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import React from 'react'
 
@@ -28,7 +28,7 @@ export function generateMetadata({ params }: { params: { postId: string } }) {
     }
 }
 
-export default async function page({ params }: { params: { postId: string } }) {
+export default async function page({ params }: { params: { postId: string, locale:string } }) {
     const post = await getPostById(params.postId)
     if (post === undefined) {
         return notFound()
@@ -45,7 +45,7 @@ export default async function page({ params }: { params: { postId: string } }) {
                 <section dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
             </article>
             <p className='my-5 mb-20'>
-                <Link href="/">← Back to home</Link>
+                <Link locale={params.locale} href="/">← Back to home</Link>
             </p>
         </main>
     )

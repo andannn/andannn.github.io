@@ -7,6 +7,11 @@ import ContactSection from "../components/ContactSection";
 import HeaderSection from "../components/HeaderSection";
 import { routing } from "@/src/i18n/routing";
 import { getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Resume",
+};
 
 export function generateStaticParams() {
     return routing.locales.map((locale) => ({ locale }));

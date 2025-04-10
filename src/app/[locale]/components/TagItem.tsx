@@ -1,13 +1,14 @@
-import Link from 'next/link';
+import { Link } from '@/src/i18n/navigation';
 import React from 'react'
 
 type Props = {
-    tag: TagWithCount
+    tag: TagWithCount,
+    locale: string,
 }
 
 type HighlightLevel = 'small' | 'normal' | 'large' | 'exLarge';
 
-export default function TagItem({ tag }: Props) {
+export default function TagItem({ tag, locale }: Props) {
     const level = getHighLightLevelOfTag(tag)
     const content = tag.tag
 
@@ -27,7 +28,7 @@ export default function TagItem({ tag }: Props) {
             break;
     }
    return (
-        <Link className={`rounded mx-4 my-5 underline ${tagClass}`} href={`/tags/${content}`}>
+        <Link className={`rounded mx-4 my-5 underline ${tagClass}`} locale={locale} href={`/tags/${content}`}>
             {content}
         </Link>
     );

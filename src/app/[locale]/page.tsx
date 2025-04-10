@@ -3,12 +3,17 @@ import TagArea from "./components/AllTagArea";
 import { getSortedPostsdata } from "@/src/lib/posts/posts";
 
 
-export default function HomePage() {
+export default async function HomePage({
+    params
+}: {
+    params: Promise<{ locale: string }>;
+}) {
+    const { locale } = await params;
     const posts = getSortedPostsdata()
     return (
         <main className="px-6 mx-auto">
-            <TagArea />
-            <PostList title={"Blog"} posts={posts} />
+            <TagArea locale={locale} />
+            <PostList locale={locale} title={"Blog"} posts={posts} />
         </main>
     );
 }

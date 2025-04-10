@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl'
 
 type TagsOfPost = string[]
 
-export default function AllTagArea() {
+export default function AllTagArea({ locale }: { locale: string }) {
     const posts = getSortedPostsdata()
     const tagWithCountList = calculateCountOfTag(posts.map(post => post.tags))
     const t = useTranslations("HomePage");
@@ -14,7 +14,7 @@ export default function AllTagArea() {
             <h2 className="text-4xl font-bold dark:text-white/90">{t("tag")}</h2>
             <div className='wrap-layout mt-6'>{
                 tagWithCountList.map(tag => {
-                    return <TagItem tag={tag} key={tag.tag} />
+                    return <TagItem locale={locale} tag={tag} key={tag.tag} />
                 })
             }</div>
         </section>
