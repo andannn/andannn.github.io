@@ -17,7 +17,7 @@ export default async function LocaleLayout({
 }) {
     return (
         <html>
-            <body className="dark:bg-slate-800">
+            <body >
                 {children}
             </body>
         </html>

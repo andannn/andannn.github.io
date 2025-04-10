@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+    scroll-behavior: smooth;
+}
+
+article h2,
+article h3,
+article h4 {
+    scroll-margin-top: 6rem;
+    /* 避开 sticky Navbar */
+}

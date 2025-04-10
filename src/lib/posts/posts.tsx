@@ -1,9 +1,13 @@
 import path from "path";
 import fs from 'fs';
 import matter from "gray-matter";
-import html from 'remark-html'
 import { remark } from 'remark'
-import remarkGfm from "remark-gfm";
+import gfm from 'remark-gfm'
+import remarkRehype from 'remark-rehype'
+import rehypeSlug from 'rehype-slug'
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import rehypePrettyCode from 'rehype-pretty-code'
+import rehypeStringify from 'rehype-stringify'
 
 const postsDirectory = path.join(process.cwd(), 'post')
 
@@ -30,9 +34,24 @@ export async function getPostById(id: string): Promise<BlogPostWithHtml | undefi
     }
     const post = getBlogPost(findResult)
     const processedContent = await remark()
-        .use(html)
-        .use(remarkGfm)
-        .process(post.content);
+        .use(gfm)
+        .use(remarkRehype)
+        .use(rehypeSlug)
+        .use(rehypeAutolinkHeadings, {
+            behavior: 'wrap',
+            properties: { className: ['anchor-link'] },
+        })
+        .use(rehypePrettyCode, {
+            theme: 'github-dark', // 可选：'github-light'、'github-dark-dimmed' 等
+            onVisitLine(node) {
+                // 保证每一行都有 <span> 包裹，方便 lineNumber 支持
+                if (node.children.length === 0) {
+                    node.children = [{ type: 'text', value: ' ' }]
+                }
+            },
+        })
+        .use(rehypeStringify)
+        .process(post.content)
 
     const contentHtml = processedContent.toString()
     return {

@@ -2,42 +2,41 @@ import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { routing } from '@/src/i18n/routing';
 import Navbar from './components/Navbar';
-import type { Metadata } from "next";
-import "../globals.css";
+import type { Metadata } from 'next';
+import '../globals.css';
 import { getTranslations } from 'next-intl/server';
+import 'highlight.js/styles/github-dark.css';
 
 export const metadata: Metadata = {
-    title: "Andannn",
+  title: 'Andannn',
 };
 
-
 export function generateStaticParams() {
-    return routing.locales.map((locale) => ({ locale }));
+  return routing.locales.map((locale) => ({ locale }));
 }
 
 export default async function LocaleLayout({
-    children,
-    params
+  children,
+  params,
 }: {
-    children: React.ReactNode;
-    params: Promise<{ locale: string }>;
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }) {
-    // Ensure that the incoming `locale` is valid
-    const { locale } = await params;
-    if (!hasLocale(routing.locales, locale)) {
-        notFound();
-    }
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
 
-    const t = await getTranslations({ locale: locale });
+  const t = await getTranslations({ locale });
 
-    return (
-        <html lang={locale}>
-            <body className="dark:bg-slate-800">
-                <NextIntlClientProvider>
-                    <Navbar locale={locale} title={'Andannn ' + t('HomePage.blog')} />
-                    {children}
-                </NextIntlClientProvider>
-            </body>
-        </html>
-    );
+  return (
+    <html lang={locale} className="dark">
+      <body className="bg-gray-50 text-slate-800 dark:bg-slate-900 dark:text-white transition-colors duration-300">
+        <NextIntlClientProvider locale={locale}>
+          <Navbar locale={locale} title={'Andannn ' + t('HomePage.blog')} />
+          <main className="max-w-4xl mx-auto px-4 py-8">{children}</main>
+        </NextIntlClientProvider>
+      </body>
+    </html>
+  );
 }

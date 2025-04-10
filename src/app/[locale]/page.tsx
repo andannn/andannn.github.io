@@ -13,7 +13,7 @@ export default async function HomePage({
     return (
         <main className="px-6 mx-auto">
             <TagArea locale={locale} />
-            <PostList locale={locale} title={"Blog"} posts={posts} />
+            <PostList locale={locale} posts={posts} />
         </main>
     );
 }
