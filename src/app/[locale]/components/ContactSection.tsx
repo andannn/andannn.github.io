@@ -1,45 +1,73 @@
+import {
+  Mail,
+  Phone,
+  Github,
+  Globe,
+  MapPin,
+} from "lucide-react";
 
 type ContactSectionProps = {
-  contact: ContactInfo
+  contact: ContactInfo;
+};
+
+function ContactItem({
+  icon: Icon,
+  value,
+  href,
+}: {
+  icon: React.ElementType;
+  value: string;
+  href?: string;
+}) {
+  return (
+    <li className="flex items-center gap-2">
+      <Icon className="w-4 h-4 text-gray-600" />
+      {href ? (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 underline"
+        >
+          {value}
+        </a>
+      ) : (
+        <span>{value}</span>
+      )}
+    </li>
+  );
 }
 
 export default function ContactSection({ contact }: ContactSectionProps) {
   return (
     <ul className="space-y-2 text-sm text-gray-700">
       {contact.email && (
-        <li>
-          <span className="font-semibold">Email：</span>
-          <a href={`mailto:${contact.email}`} className="text-blue-600 underline">
-            {contact.email}
-          </a>
-        </li>
+        <ContactItem
+          icon={Mail}
+          value={contact.email}
+          href={`mailto:${contact.email}`}
+        />
       )}
       {contact.phone && (
-        <li>
-          <span className="font-semibold">电话：</span>{contact.phone}
-        </li>
+        <ContactItem icon={Phone} value={contact.phone} />
       )}
       {contact.github && (
-        <li>
-          <span className="font-semibold">GitHub：</span>
-          <a href={contact.github} target="_blank" className="text-blue-600 underline">
-            {contact.github}
-          </a>
-        </li>
+        <ContactItem
+          icon={Github}
+          value={contact.github}
+          href={contact.github}
+        />
       )}
       {contact.website && (
-        <li>
-          <span className="font-semibold">网站：</span>
-          <a href={contact.website} target="_blank" className="text-blue-600 underline">
-            {contact.website}
-          </a>
-        </li>
+        <ContactItem
+          icon={Globe}
+          value={contact.website}
+          href={contact.website}
+        />
       )}
       {contact.location && (
-        <li>
-          <span className="font-semibold">所在地：</span>{contact.location}
-        </li>
+        <ContactItem icon={MapPin} value={contact.location} />
       )}
     </ul>
-  )
+  );
 }
