@@ -23,7 +23,7 @@ export default function Navbar({ title, locale }: Props) {
         <div className="hidden sm:flex space-x-6 text-sm font-medium text-slate-600 dark:text-slate-300">
           <Link
             locale={locale}
-            href="/about"
+            href="/resume"
             className="hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
           >
             About
