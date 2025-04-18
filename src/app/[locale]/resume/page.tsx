@@ -34,7 +34,7 @@ export default async function ResumesPage({
                 name={resumeData.name}
                 title={resumeData.title}
                 summary={resumeData.summary}
-                avatarUrl="/images/avatar.jpeg"
+                avatarUrl="/images/avatar.webp"
             />
 
             <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 xl:gap-8">
