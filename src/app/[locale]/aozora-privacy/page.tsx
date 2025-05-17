@@ -1,6 +1,4 @@
-import Head from 'next/head'
 import { routing } from "@/src/i18n/routing";
-import { getTranslations } from 'next-intl/server';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
