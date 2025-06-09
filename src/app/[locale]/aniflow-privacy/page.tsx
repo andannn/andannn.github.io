@@ -6,10 +6,9 @@ export function generateStaticParams() {
 
 export function generateMetadata() {
   return {
-    title: "青空読書　プライバシーポリシー",
+    title: "Terms of Service & Privacy Policy",
   }
 }
-
 
 export default async function LegalPage({
   params
@@ -18,7 +17,7 @@ export default async function LegalPage({
 }) {
   const { locale } = await params;
   const legalData = await import(
-    `@/src/lib/privacy/aozora/legalcontent_${locale}.ts`
+    `@/src/lib/privacy/aniflow/legalcontent_${locale}.ts`
   ).then((mod) => mod.default as LegalContent);
 
   return (
