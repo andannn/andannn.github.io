@@ -46,7 +46,7 @@ export const legalContent_zh = {
     },
     {
       title: "第三方登录",
-      content: "AniFlow 使用 AniList 的 OAuth2 进行身份验证。应用仅在您授权的前提下访问您的公开资料和动画列表。\n详细信息请参见：<https://anilist.co/privacy-policy>"
+      content: "AniFlow 使用 AniList 的 OAuth2 进行身份验证。应用仅在您授权的前提下访问您的公开资料和动画列表。"
     }
   ]
 };

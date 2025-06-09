@@ -46,7 +46,7 @@ export const legalContent_ja = {
     },
     {
       title: "外部ログインについて",
-      content: "AniFlow は、AniList の OAuth2 を用いたログイン機能を提供しています。アプリがアクセスするのは、ユーザーが許可した公開プロフィール情報およびアニメリストに限られます。\n詳細は以下をご確認ください：<https://anilist.co/privacy-policy>"
+      content: "AniFlow は、AniList の OAuth2 を用いたログイン機能を提供しています。アプリがアクセスするのは、ユーザーが許可した公開プロフィール情報およびアニメリストに限られます。"
     }
   ]
 };

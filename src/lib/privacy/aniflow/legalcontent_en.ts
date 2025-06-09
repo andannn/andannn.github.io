@@ -46,7 +46,7 @@ export const legalContent_en = {
     },
     {
       title: "Third-Party Logins",
-      content: "AniFlow uses AniList's OAuth2 for authentication. The app only accesses your public AniList profile and anime list with your permission.\nFor details, refer to: <https://anilist.co/privacy-policy>"
+      content: "AniFlow uses AniList's OAuth2 for authentication. The app only accesses your public AniList profile and anime list with your permission."
     }
   ]
 };
