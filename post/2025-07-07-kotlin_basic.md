@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Kotlin Basic"
+title: "Kotlin Multiplatform研修"
 date: 2025-07-07 11:45:48 +0800
 tag: "Compose|Android"
 ---
@@ -75,7 +75,7 @@ KMP支持函数级别粒度的共享，让你可以非常灵活地渐进式集�
 共享逻辑的范围完全自由：
 可以是一个函数， 一个工具类， 或者整个数据层，甚至UI+数据层都由Kotlin实现。 
 
-[image1](../public/images/image3.png)
+![image3](/images/image3.png)
 
 ### Compose Multiplatform统一UI
 
@@ -108,11 +108,9 @@ Flutter/React Native开发中，几乎可以找到所有原生对应的第三方
 ## Kotlin Multiplatform 应用事例
 
 - X（旧推特）用KMP重构
+
 https://www.youtube.com/watch?v=z-u99yZFn5o
 
-[image4](../public/images/image4.png)
-
 - Bilibili使用KMP共享数据层和UI
-https://www.youtube.com/watch?v=YKTlW8Qkj0w&t=340s
 
-[image5](../public/images/image4.png)
+https://www.youtube.com/watch?v=YKTlW8Qkj0w&t=340s
