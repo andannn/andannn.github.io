@@ -37,10 +37,6 @@ export async function getPostById(id: string): Promise<BlogPostWithHtml | undefi
         .use(gfm)
         .use(remarkRehype)
         .use(rehypeSlug)
-        .use(rehypeAutolinkHeadings, {
-            behavior: 'wrap',
-            properties: { className: ['anchor-link'] },
-        })
         .use(rehypePrettyCode, {
             theme: 'github-dark', // 可选：'github-light'、'github-dark-dimmed' 等
             onVisitLine(node) {
