@@ -2,7 +2,7 @@
 layout: post
 title: "Swift UI学习"
 date: 2025-08-29 11:45:48 +0800
-tag: "Swift|Kotlin"
+tag: "Swift"
 ---
 
 记录一下学习Swift UI的过程。
