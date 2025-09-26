@@ -122,29 +122,3 @@ gerrit/etc/gerrit.config
 docker compose down
 docker compose up -d
 ```
-
-### 启动Jenkins Docker Container
-
-// TEMP
-
-用 Jenkins Credentials 管理私钥（不依赖容器文件）
-
-1. 在宿主机生成一对 key：
-
-```bash
-ssh-keygen -t ed25519 -f ./jenkins-gerrit/id_ed25519 -C "jenkins"
-```
-
-2. 把 公钥（id_ed25519.pub）粘到 Gerrit：Settings → SSH Keys。
-
-3. 在 Jenkins：Manage Jenkins → Credentials → Global → Add Credentials
-
- - Kind: SSH Username with private key
-
- - Username: 你的 Gerrit 用户名（如 Andannn/jenkins）
-
- - Private Key: Enter directly（粘贴 id_ed25519 私钥内容）
-
- - 保存后，在 Job/Server 配置里选这条凭据。
-
-// TEMP
