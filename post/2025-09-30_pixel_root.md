@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Ktor study"
+title: "Pixel 6a 解锁 & 刷机 & Root"
 date: 2025-09-30 21:45:48 +0800
 tag: "Root|Magisk"
 ---
