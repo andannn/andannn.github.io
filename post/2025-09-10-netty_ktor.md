@@ -2,7 +2,7 @@
 layout: post
 title: "Ktor学习"
 date: 2025-09-10 11:45:48 +0800
-tag: "Kotlin|Backend|Netty"
+tag: "Kotlin|Backend|Netty|Ktor"
 ---
 
 最近想补一下网络编程的知识，最热门的肯定是Spring Boot，但是我对于Spring的框架设计很反感，我也不是很熟悉Java反射的api，所以阅读源码很困难。
