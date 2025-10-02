@@ -50,6 +50,16 @@ call.respond(...) 触发。ApplicationSendPipelin，在最后的“Engineg Phase
 
 ## Ktor Server端插件整理
 
+### ContentNegotiation
+
+https://ktor.io/docs/server-serialization.html
+
+ - convertResponseBody
+ 转换ResponseBody，拦截器挂在ApplicationSendPipeline.Transform
+
+ - convertRequestBody
+ 转换RequestBody，拦截器挂在ApplicationReceivePipeline.Transform
+
 ### Caching Headers
 https://ktor.io/docs/server-caching-headers.html#configure
 
