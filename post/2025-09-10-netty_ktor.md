@@ -229,7 +229,7 @@ TODO
 
 
 ### Authentication
-
+TODO
 
 ### openAPI / swaggerUI
 TODO
@@ -238,11 +238,36 @@ TODO
 
 ### HttpCache
 
+https://ktor.io/docs/client-caching.html
+
+遵循ETag、Last-Modified、Cache-Control 等响应头，自动缓存并复用响应
+
+```kotlin
+val client = HttpClient(CIO) {
+    install(HttpCache)
+}
+```
+
 ### HttpCookies
+
+https://ktor.io/docs/client-cookies.htm
+
+默认情况下，插件使用一个内存保持的storage来存cookie， 如果想持久化，需要自定义一个storage。
+```
+val client = HttpClient(CIO) {
+    install(HttpCookies)
+}
+```
 
 ### Logging
 
+https://ktor.io/docs/client-logging.html
+
 ### ContentNegotiation
+
+https://ktor.io/docs/client-serialization.html
+
+可以把response body反序列化， 也可以把request body序列化。
 
 ### ContentEncoding
 
