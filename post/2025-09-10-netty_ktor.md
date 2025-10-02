@@ -299,13 +299,6 @@ Accept-Encoding: gzip
 默认安装的插件， 挂在HttpReceivePipeline::Before。 也就是说收到response是， 立即读取body所有数据并做内存缓存。
 提供给后续phase使用， 例如ContentNegotiation。
 
- * It may be useful to prevent saving body in case of big size or streaming. To do so use [HttpRequestBuilder.skipSavingBody]:
- * ```kotlin
- * client.get("http://myurl.com") {
- *     skipSavingBody()
- * }
- * ```
-
 ### ResponseObserver
 监听和观察每一次 HTTP 响应，方便做日志、统计或调试。
 
