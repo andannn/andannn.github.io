@@ -236,4 +236,36 @@ TODO
 
 ## Ktor Client端插件整理
 
+### HttpCache
 
+### HttpCookies
+
+### Logging
+
+### ContentNegotiation
+
+### ContentEncoding
+
+### WebSockets
+
+### SSE
+
+### HttpPlainText
+
+### HttpClient.defaultTransformers
+
+### BodyProgress
+
+### SaveBody
+
+### ResponseObserver
+
+### HttpCallValidator
+
+### BOMRemover
+
+### Auth
+
+### CallId
+
+### Resources
