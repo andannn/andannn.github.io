@@ -128,7 +128,25 @@ TODO
 
 ### ForwardedHeaders
 
-TODO
+在生产环境中，Web 应用通常不是直接暴露在公网，而是部署在 Nginx / Apache / HAProxy / LoadBalancer / CDN 之后。
+
+这会带来一个问题：
+
+- 你的应用实际监听的是 内网地址（比如 http://127.0.0.1:8080），
+
+- 但用户访问的是 公网地址（比如 https://example.com）。
+
+当代理把请求转发给应用时：
+
+原始的 客户端 IP、协议 (http/https)、Host 信息就会丢失。
+
+这时代理会加上类似这样的头：
+
+```
+X-Forwarded-For: 203.0.113.195   # 原始客户端 IP
+X-Forwarded-Proto: https         # 原始协议
+X-Forwarded-Host: example.com    # 原始 Host
+```
 
 ### FreeMarker/Mustache/JTE/Pebble/Thymeleaf/Velocity
 
@@ -138,7 +156,9 @@ https://ktor.io/docs/server-templating.html
 
 ### HSTS
 
-TODO
+HTTP Strict Transport Security（严格传输安全）
+
+强制浏览器必须用HTTPS请求。
 
 ### HttpsRedirect
 A plugin that redirects all HTTP requests to the HTTPS
@@ -208,7 +228,12 @@ TODO
 TODO
 
 
+### Authentication
+
+
 ### openAPI / swaggerUI
 TODO
 
 ## Ktor Client端插件整理
+
+
