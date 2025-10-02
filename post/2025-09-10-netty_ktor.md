@@ -271,21 +271,38 @@ https://ktor.io/docs/client-serialization.html
 
 ### ContentEncoding
 
+安装插件会添加请求头
+
+```
+Accept-Encoding: gzip
+```
+然后根据respond的压缩方式，解压缩。
+
 ### WebSockets
 
 ### SSE
 
 ### HttpPlainText
 
-### HttpClient.defaultTransformers
-
 ### BodyProgress
 
 ### SaveBody
 
+默认安装的插件， 挂在HttpReceivePipeline::Before。 也就是说收到response是， 立即读取body所有数据并做内存缓存。
+提供给后续phase使用， 例如ContentNegotiation。
+
+ * It may be useful to prevent saving body in case of big size or streaming. To do so use [HttpRequestBuilder.skipSavingBody]:
+ * ```kotlin
+ * client.get("http://myurl.com") {
+ *     skipSavingBody()
+ * }
+ * ```
+
 ### ResponseObserver
 
 ### HttpCallValidator
+
+将错误响应，转换成App定义的exception。
 
 ### BOMRemover
 
