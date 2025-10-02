@@ -283,8 +283,16 @@ Accept-Encoding: gzip
 ### SSE
 
 ### HttpPlainText
+默认安装的插件
+
+- 请求 (Request) 处理, 当你在 request 里传入 String 作为 body 时，HttpPlainText 会自动把它转成 text/plain 类型的请求体。
+
+- 响应 (Response) 处理, 当服务端返回 Content-Type: text/plain 时，你可以直接用 receive<String>()
+
 
 ### BodyProgress
+默认安装的插件
+用来监听 请求/响应体 (body) 的上传和下载进度。
 
 ### SaveBody
 
@@ -299,15 +307,21 @@ Accept-Encoding: gzip
  * ```
 
 ### ResponseObserver
+监听和观察每一次 HTTP 响应，方便做日志、统计或调试。
 
 ### HttpCallValidator
 
 将错误响应，转换成App定义的exception。
 
 ### BOMRemover
+在 收到请求体 时检查是否有 BOM, 如果有就自动去掉。
 
 ### Auth
 
 ### CallId
 
+在发出的请求上自动附加一个 ID
+
 ### Resources
+
+类型安全的路由定义插件
