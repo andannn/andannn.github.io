@@ -45,7 +45,7 @@ call.receive<T>() 触发。获得请求里的body， 并进行反序列化操作
 call.respond(...) 触发。ApplicationSendPipelin，在最后的“Engineg Phase“上把相应结果交给Netty
 
 
-![image3](/images/ktor.png)
+![image3](/images/Ktor.png)
 
 
 ## Ktor Server端插件整理
