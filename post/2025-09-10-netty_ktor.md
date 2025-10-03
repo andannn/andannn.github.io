@@ -282,6 +282,22 @@ Accept-Encoding: gzip
 
 ### SSE
 
+SSE client, 接收服务器发送到消息。
+```kotlin
+            client.sse("http://0.0.0.0:8082/sse") {
+                incoming.collect {
+                    println("Event: ${it.data}")
+                }
+            }
+```
+sse支持去掉， 如果所在的协程被cancel了， 链接会断开。
+
+Client的SSE插件可以配置Response buffering， 额外保存一份内存缓存，通过SSESession::bodyBuffer()，
+主要作用是出异常时保存信息在Exception里， 用于Debug。
+```
+        throw mapToSSEException(session.call, session.bodyBuffer(), cause)
+```
+
 ### HttpPlainText
 默认安装的插件
 
