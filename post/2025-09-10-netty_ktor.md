@@ -228,7 +228,162 @@ TODO
 
 
 ### Authentication
-TODO
+
+#### Basic
+
+用Base64加密用户名和密码， 放在HttpHeader里， 安全性很低。
+
+Ktor中对应的实现：
+
+```kotlin
+internal fun constructBasicAuthValue(credentials: BasicAuthCredentials): String {
+    val authString = "${credentials.username}:${credentials.password}"
+    val authBuf = authString.toByteArray(Charsets.UTF_8).encodeBase64()
+
+    return "Basic $authBuf"
+}
+```
+
+Basic请求的流程：
+
+1. 客户端发送一个不带认证的请求
+2. 服务端返回401，和www-authenticate Header。 提示需要认证信息。
+```
+www-authenticate: Basic realm="Access to the '/' path", charset=UTF-8
+```
+3. 客户端携带认证信息再次请求。
+```
+Authorization: Basic amV0YnJhaW5zOmZvb2Jhcg==
+```
+4. 服务端校验认证信息， 并返回结果。
+
+#### Digest
+
+Digest请求的流程：
+
+1. 客户端发送一个不带认证的请求
+2. 服务端返回401，和一次性随机字符串nonce
+```
+www-authenticate: Digest realm="Access to the '/' path", nonce="342ca1fbbcb996f0", algorithm=MD5
+```
+
+3. 客户端携带认证信息再次请求。认证信息的计算方法为：
+ktor/ktor-client/ktor-client-plugins/ktor-client-auth/common/src/io/ktor/client/plugins/auth/providers/DigestAuthProvider.kt
+```
+    override suspend fun addRequestHeaders(request: HttpRequestBuilder, authHeader: HttpAuthHeader?)
+```
+
+Request Header
+```
+Authorization: Digest realm="Access to the '/' path", username="jetbrains", nonce="342ca1fbbcb996f0", cnonce="d2434ba276a811f7", response="1353d8e97dc21bea58a27e942347712d", uri="/digest_auth", nc=00000001, algorithm=MD5
+```
+
+4. 服务端校验认证信息， 并返回结果。
+
+#### Bearer
+
+##### JWT (JSON Web Tokens)
+
+https://www.jwt.io/introduction#when-to-use-json-web-tokens
+
+- JWT 简介
+
+JWT由三部分组成。
+
+Header.Payload.Signature
+
+ - Header
+
+```json
+{
+  "alg": "HS256", // 签名算法（例如 HS256、RS256）
+  "typ": "JWT"    // 类型（通常是 JWT）
+}
+```
+
+这段Json会被编码成Base64Url
+
+ - PayLoad
+用于存放实际业务数据（用户身份、权限、签发时间等）
+
+JWT 的内容由若干个字段（称为 Claims）组成。
+
+根据规范 RFC 7519 有三类：
+
+- Registered Claims：
+
+https://datatracker.ietf.org/doc/html/rfc7519#section-4.1
+
+- Public
+
+自定义字段。
+
+- Private Claims：
+
+自定义字段。
+
+Payload 的示例：
+```json
+{
+  "iss": "my-auth-server",
+  "sub": "user_12345",
+  "aud": "my-frontend-app",
+  "iat": 1736892376,
+  "nbf": 1736892376,
+  "exp": 1736895976,
+  "jti": "9f7e8e6c7a5b42c8a2c3",
+  "role": "admin",
+  "scopes": ["read:users", "write:users"]
+}
+```
+
+Json会被编码成Base64Url.
+
+ - Signature
+前两段拼在一起，然后用算法(alg) + 密钥进行签名。
+
+计算规则：
+```
+Signature = Sign(
+  base64UrlEncode(header) + "." + base64UrlEncode(payload),
+  key,                ← 使用的密钥类型由 alg 决定
+  alg                 ← 使用的算法由 Header 指定
+)
+```
+
+常见签名算法（alg）
+
+HS256
+
+RS256
+
+ES256
+
+PS256
+
+ - JWT认证流程：
+
+https://ktor.io/docs/server-jwt.html
+
+RS256/HS256签名算法的实装示例：
+
+https://github.com/ktorio/ktor-documentation/tree/3.3.1/codeSnippets/snippets/auth-jwt-hs256
+https://github.com/ktorio/ktor-documentation/tree/3.3.1/codeSnippets/snippets/auth-jwt-rs256
+
+ 1. 客户端使用凭证（用户名和密码）向服务器的特定认证路由发送 POST 请求
+ 2. 如果凭证有效，服务器会生成一个 JSON Web Token (JWT)，
+并使用指定的算法对其进行签名。
+ 3. 服务器返回 JWT
+ 4. 客户端在访问受保护资源时，会在请求头中通过 Authorization: Bearer 方式携带该 Token。
+
+```
+GET http://localhost:8080/hello
+Authorization: Bearer {{auth_token}}
+```
+ 5. 服务端取得token并进行验证。 
+    - 根据签名算法验证Signature签名。 
+    - 服务端根据payload自定义验证。
+ 6. 验证成功后， 返回请求的资源。
 
 ### openAPI / swaggerUI
 TODO
@@ -325,129 +480,9 @@ Client的SSE插件可以配置Response buffering， 额外保存一份内存缓�
 在 收到请求体 时检查是否有 BOM, 如果有就自动去掉。
 
 ### Auth
-Ktor支持以下三种Http认证，Basic， Digest，Bearer。
+Ktor 客户端支持以下三种Http认证，Basic， Digest，Bearer。
 
-1. Basic
-
-用Base64加密用户名和密码， 放在HttpHeader里， 安全性很低。
-
-Ktor中对应的实现：
-
-```kotlin
-internal fun constructBasicAuthValue(credentials: BasicAuthCredentials): String {
-    val authString = "${credentials.username}:${credentials.password}"
-    val authBuf = authString.toByteArray(Charsets.UTF_8).encodeBase64()
-
-    return "Basic $authBuf"
-}
-```
-
-Basic请求的流程：
-
-- 客户端发送一个不带认证的请求
-- 服务端返回401，和www-authenticate Header。 提示需要认证信息。
-```
-www-authenticate: Basic realm="Access to the '/' path", charset=UTF-8
-```
-- 客户端携带认证信息再次请求。
-```
-Authorization: Basic amV0YnJhaW5zOmZvb2Jhcg==
-```
-- 服务端校验认证信息， 并返回结果。
-
-
-2. Digest
-
-Digest请求的流程：
-
-- 客户端发送一个不带认证的请求
-- 服务端返回401，和一次性随机字符串nonce
-```
-www-authenticate: Digest realm="Access to the '/' path", nonce="342ca1fbbcb996f0", algorithm=MD5
-```
-
-- 客户端携带认证信息再次请求。认证信息的计算方法为：
-ktor/ktor-client/ktor-client-plugins/ktor-client-auth/common/src/io/ktor/client/plugins/auth/providers/DigestAuthProvider.kt
-```
-    override suspend fun addRequestHeaders(request: HttpRequestBuilder, authHeader: HttpAuthHeader?)
-```
-
-Request Header
-```
-Authorization: Digest realm="Access to the '/' path", username="jetbrains", nonce="342ca1fbbcb996f0", cnonce="d2434ba276a811f7", response="1353d8e97dc21bea58a27e942347712d", uri="/digest_auth", nc=00000001, algorithm=MD5
-```
-
-- 服务端校验认证信息， 并返回结果。
-
-3. Bearer
-
-   3.1 JWT (JSON Web Tokens)
-
-https://www.jwt.io/introduction#when-to-use-json-web-tokens
-
-JWT由三部分组成。
-
-Header.Payload.Signature
-
- - Header
-
-```json
-{
-  "alg": "HS256", // 签名算法（例如 HS256、RS256）
-  "typ": "JWT"    // 类型（通常是 JWT）
-}
-```
-
-这段Json会被编码成Base64Url
-
- - PayLoad
-用于存放实际业务数据（用户身份、权限、签发时间等）
-
-JWT 的内容由若干个字段（称为 Claims）组成。
-根据规范 RFC 7519 有三类：
-
-Registered Claims：
-https://datatracker.ietf.org/doc/html/rfc7519#section-4.1
-
-Public / Private Claims：
-是自定义字段。
-
-Payload 的示例：
-```json
-{
-  "iss": "my-auth-server",
-  "sub": "user_12345",
-  "aud": "my-frontend-app",
-  "iat": 1736892376,
-  "nbf": 1736892376,
-  "exp": 1736895976,
-  "jti": "9f7e8e6c7a5b42c8a2c3",
-  "role": "admin",
-  "scopes": ["read:users", "write:users"]
-}
-```
-
-Json会被编码成Base64Url.
-
- - Signature
-前两段拼在一起，然后用算法(alg) + 密钥进行签名。
-
-计算规则：
-Signature = Sign(
-  base64UrlEncode(header) + "." + base64UrlEncode(payload),
-  key,                ← 使用的密钥类型由 alg 决定
-  alg                 ← 使用的算法由 Header 指定
-)
-
-常见签名算法（alg）
-HS256
-
-RS256
-
-ES256
-
-PS256
-
+通过设置`sendWithoutRequest`过滤请求，可以不带认证访问服务端。
 
 ### CallId
 
