@@ -7,6 +7,9 @@ import remarkRehype from 'remark-rehype'
 import rehypeSlug from 'rehype-slug'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeStringify from 'rehype-stringify'
+import remarkMath from 'remark-math'
+import rehypeKatex from 'rehype-katex'
+import 'katex/dist/katex.min.css'
 
 const postsDirectory = path.join(process.cwd(), 'post')
 
@@ -34,6 +37,7 @@ export async function getPostById(id: string): Promise<BlogPostWithHtml | undefi
     const post = getBlogPost(findResult)
     const processedContent = await remark()
         .use(gfm)
+        .use(remarkMath)
         .use(remarkRehype)
         .use(rehypeSlug)
         .use(rehypePrettyCode, {
@@ -45,6 +49,7 @@ export async function getPostById(id: string): Promise<BlogPostWithHtml | undefi
                 }
             },
         })
+        .use(rehypeKatex)
         .use(rehypeStringify)
         .process(post.content)
 
