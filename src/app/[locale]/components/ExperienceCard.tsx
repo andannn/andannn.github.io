@@ -21,9 +21,16 @@ export default function ExperienceCard({
             }
 
             <div className="pl-4">
-                <h3 className="text-xl font-semibold text-gray-800">{experience.company}</h3>
+                <h3 className="text-xl font-semibold text-gray-800">{experience.title}</h3>
                 <div className="text-sm text-gray-600">
-                    {experience.title} ｜ {experience.startDate} - {experience.endDate ?? '至今'}
+                    {experience.postion && (
+                        <span>{experience.postion} ｜ </span>
+                    )}
+                    {(experience.startDate) ? (
+                        <>
+                            {experience.startDate} - {experience.endDate ?? 'Present'}
+                        </>
+                    ) : null}
                 </div>
                 <ul className="list-disc pl-5 text-sm text-gray-700 mt-2">
                     {experience.description.map((line, i) => (

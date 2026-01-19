@@ -1,10 +1,10 @@
-export  const resumeData_en = {
+export const resumeData_en: ResumeData = {
     name: "X XX",
     title: "Android / Flutter Application Engineer",
     summary:
-        "Nearly 5 years of experience in Android application development, skilled in Jetpack Compose. Led the development of camera apps for Xperia flagship models and participated in the cross-platform migration of the dPoint app to Flutter. Experienced in hybrid Flutter architecture with strong understanding of code structure, modularity, and maintainability.",
+        "Building upon extensive development experience in both Android (Kotlin) and Flutter, I prioritize selecting optimal technologies and architectural designs tailored to project characteristics. Beyond feature implementation, I emphasize writing 'highly maintainable code' by adopting multi-module architectures to withstand long-term operation. I continuously strive to master the latest trends, such as KMP, aiming to contribute to team and product quality through robust yet flexible development.",
     contact: {
-        email: "jqn296763005@gamil.com",
+        email: "jqn296763005@gmail.com",
         phone: "xxx-xxxx-xxxx",
         github: "https://github.com/andannn",
         website: "https://andannn.github.io/",
@@ -12,117 +12,149 @@ export  const resumeData_en = {
     },
     experience: [
         {
-            company: "Hithink RoyalFlush Group Co., Ltd.",
-            title: "Application System Engineer",
+            title: "Hi-Think Japan",
+            postion: "APSE (Application System Engineer)",
             startDate: "2023-08",
+            endDate: "Present",
             description: [
-                "Joined Hithink Group (Dalian) in 2023 and transferred to the Japan branch (Hithink Japan Co., Ltd.) in 2024, continuing to work on the same project (dPoint app).",
-                "First encountered Flutter through this project, which sparked a strong interest in cross-platform development and led to continuous self-driven learning and practice."
+                "Participated in the Flutter migration project for the 'd Point Club' app, which boasts 90 million members. Although joining in the later phase, I quickly grasped the specifications and took charge of implementation."
             ],
             projects: [
                 {
-                    name: "dPoint Cross-platform App Migration Project",
+                    name: "d Point App Flutter Migration Project",
                     link: "https://play.google.com/store/apps/details?id=com.nttdocomo.android.dpoint",
                     teamSize: 50,
                     role: "Developer",
                     startDate: "2023-08",
+                    endDate: "Present",
                     description: [
-                        "Migrated the original dPoint Android (Java) and iOS (OC) apps into a unified Flutter app for cross-platform support.",
-                        "Joined during the late phase of the project and quickly ramped up on existing architecture and workflows to contribute UI module implementations.",
-                        "Proposed replacing AAR-based Flutter module integration with direct source dependency to improve build speed, collaboration, and debugging experience."
+                        "A large-scale project migrating existing native apps (Android/Java, iOS/Obj-C) to a cross-platform configuration using Flutter.",
+                        "Large-scale Team Development: In a 50-person project, quickly caught up with existing code and specifications despite joining late, and successfully implemented UI modules.",
+                        "Technical Investigation for Flutter Updates: Conducted impact analysis for library compatibility, deprecated API fixes, and rendering engine changes (Impeller), ensuring safe execution of update operations for the large-scale application."
                     ],
                     techStack: ["iOS", "Dart/Flutter", "Kotlin/Android"]
                 }
             ]
         },
         {
-            company: "Neusoft Corporation",
-            title: "Android Application Engineer",
+            title: "Neusoft Group (Dalian)",
+            postion: "Android Application Engineer",
             startDate: "2020-08",
             endDate: "2023-08",
             description: [
-                "First full-time role, primarily involved in Android development. Gained familiarity with Android best practices and development standards. Was introduced to Kotlin early in my career, which has since become my favorite language."
+                "Engaged in the development of genuine camera and video editing apps for global flagship smartphones (Sony Xperia). Leveraged strong expertise in modern Android development using Kotlin to propose and lead the adoption of Jetpack Compose in new app development, contributing to reduced development man-hours and improved maintainability."
             ],
             projects: [
                 {
-                    name: "Photography Pro – Xperia Camera App",
+                    name: "Xperia Camera App 'Photography Pro' Development",
                     link: "https://www.sony.jp/xperia/myxperia/app/photography-pro/?srsltid=AfmBOooH7otyA0OruoAZZLPt0Psz7tLIbrG21LD54owI4-6u9yZvEBzJ",
-                    role: "Developer",
+                    role: "Implementation Lead",
                     teamSize: 10,
                     startDate: "2020-08",
                     endDate: "2023-01",
                     description: [
-                        "Developed core camera UI and logic for Xperia flagship models, focusing on optical zoom control and real-time synchronization.",
-                        "Implemented Pro mode orientation switching feature for Xperia 1V, enabling responsive UI adaptation based on device rotation."
+                        "Developed the high-end camera application for Xperia flagship models.",
+                        "Optical Zoom Control: Implemented UI and logic for 85-125mm optical zoom lenses. Achieved strict camera parameter synchronization based on hardware specifications.",
+                        "UI/UX Optimization: Implemented the portrait/landscape interface switching feature for 'Pro Mode' introduced in Xperia 1 V. Built dynamic layout changes linked to the accelerometer to enhance operability."
                     ],
                     techStack: ["Android", "Kotlin/Java", "Jetpack AndroidX"]
                 },
                 {
-                    name: "Video Creator – Xperia Editing App",
+                    name: "Xperia Video Editor 'Video Creator' Development",
                     link: "https://play.google.com/store/apps/details?id=jp.co.sony.mc.videoeditor",
-                    role: "Tech Design & Development",
+                    role: "Design & Development",
                     teamSize: 6,
                     startDate: "2023-01",
                     endDate: "2023-08",
                     description: [
-                        "Led the editing screen implementation for the Xperia 1V editing app project.",
-                        "Due to tight deadlines and high complexity, proposed and adopted Jetpack Compose for part of the UI to enhance efficiency and maintainability.",
-                        "Menu area was implemented with Jetpack Compose for light UI animation, while timeline editing area remained in classic View due to advanced gesture requirements."
+                        "Participated in the launch of a new video editing application.",
+                        "Jetpack Compose Proposal & Adoption: Proposed Compose to improve UI construction efficiency for a project with short deadlines and a small team. Reduced boilerplate code and accelerated development speed.",
+                        "Hybrid Architecture Design: Designed and implemented a 'right tool for the right job' architecture, using the traditional View system for the 'Timeline' area requiring complex gesture handling and performance, while using Compose for settings and menus."
                     ],
                     techStack: ["Compose Android", "Kotlin/Java", "Jetpack AndroidX"]
                 }
             ]
         },
         {
-            company: "Harbin Institute of Technology",
-            title: "Major in Automation",
+            title: "Harbin Institute of Technology",
+            postion: "Automation",
             startDate: "2016-09",
             endDate: "2020-06",
-            description: ["Research on image positioning and recognition"]
+            description: ["Research on image positioning and recognition"],
+            projects: []
         }
     ],
     personalProjects: [
         {
-            name: "AniFlow – Unofficial AniList Mobile Client",
-            link: "https://github.com/andannn/aniflow",
-            startDate: "2023-09",
+            title: "Flutter Application Development",
             description: [
-                "A cross-platform anime browsing app built with Flutter, using the AniList GraphQL API to support anime search, rating, and favorites.",
-                "Implements dark mode, pagination, and clean Material Design UI inspired by AniList's official web styling.",
-                "Designed around Single Source of Truth and Unidirectional Data Flow principles to ensure predictable and maintainable state handling.",
-                "Originally used sqflite for local caching and later migrated to drift for reactive UI synchronization via Stream API."
+                "Developing practical applications leveraging the efficiency and expressiveness of the cross-platform technology 'Flutter'.",
+                "Additionally, actively tracking the latest framework trends (Master Channel) through experimental projects to anticipate future technical trends."
             ],
-            techStack: ["Flutter", "Dart", "GraphQL", "Bloc", "Drift/SQLite"]
+            projects: [
+                {
+                    name: "AniFlow - Unofficial AniList Client",
+                    link: "https://github.com/andannn/aniflow",
+                    description: [
+                        "An anime tracking and management app utilizing the AniList API. Fully compliant with Material Design 3, achieving a fluid UX using Dynamic Color and Hero animations.",
+                        "Implemented an 'Offline-First' design combining efficient data fetching via GraphQL with local caching via Drift (SQLite). Adopted BLoC for strict state management to build robust data flow."
+                    ],
+                    techStack: ["Flutter", "Dart", "Clean Architecture", "GraphQL", "Bloc", "Drift (SQLite)"]
+                }
+            ]
         },
         {
-            name: "Melodify – Local Music Player App",
-            link: "https://github.com/andannn/Melodify",
-            startDate: "2023-02",
+            title: "Kotlin Multiplatform (KMP) Research",
             description: [
-                "A local music player app started as a Kotlin and Jetpack Compose learning project, which evolved through several refactors to adopt a modular and maintainable architecture.",
-                "Implemented reactive data-driven UI using Room + Flow.",
-                "Migrated from Hilt to Koin to enable Kotlin Multiplatform support.",
-                "Integrated Compose Multiplatform and Kotlin Multiplatform to support Android, iOS, and Desktop with shared business logic and UI.",
-                "Replaced ViewModel-based state management with Google's Circuit library for a more decoupled and clear state flow."
+                "In addition to deepening Android Native skills, practicing code sharing technologies using Kotlin Multiplatform (KMP) and Compose Multiplatform (CMP).",
             ],
-            techStack: ["Android", "Compose Multiplatform", "Kotlin Multiplatform", "Media3"]
+            projects: [
+                {
+                    name: "Melodify - KMP/CMP Music Player",
+                    link: "https://github.com/andannn/Melodify",
+                    description: [
+                        "A project aimed at applying and verifying the latest tech stacks and architectural patterns without constraints.",
+                        "Achieved high-level coordination between platform-specific features and the cross-platform layer, such as integrally handling Android's Media3 and iOS's AVPlayer."
+                    ],
+                    techStack: ["Kotlin Multiplatform", "Compose Multiplatform", "Koin", "Media3", "Room"]
+                },
+                {
+                    name: "AozoraBooks - Compose Aozora Bunko Reader",
+                    link: "https://github.com/andannn/AozoraBooks",
+                    description: [
+                        "A project aiming to experience the full cycle of store release and continuous production maintenance for both Android and iOS platforms.",
+                        "Technically, achieved practicality as an e-book viewer by custom-implementing 'vertical writing' (Tategaki) and 'Ruby' rendering, which are difficult with standard Compose.",
+                        "Focused on building and operating the delivery cycle, including automated builds via CI/CD and handling store review processes."
+                    ],
+                    techStack: ["Compose Multiplatform", "Kotlin Multiplatform", "Canvas API", "GitHub Actions", "Room"]
+                },
+                {
+                    name: "AniflowKMP - Shared Logic & Native UI",
+                    link: "https://github.com/andannn/AniflowKMP",
+                    description: [
+                        "A project to verify and compare the practicality of the KMP 'Shared Logic + Native UI' architecture.",
+                        "Unified Data and Domain layers with Kotlin Multiplatform to enhance maintainability, while adopting Jetpack Compose (Android) and SwiftUI (iOS) for the UI layer to pursue UX fully optimized for each OS.",
+                    ],
+                    techStack: ["Kotlin Multiplatform", "Jetpack Compose", "SwiftUI", "Ktor", "SqlDelight/Room"]
+                }
+            ]
         }
     ],
     skills: [
         {
             title: "Platforms",
-            contents: ["Android", "Flutter"]
+            contents: ["Android", "Flutter", "Kotlin Multiplatform"]
         },
         {
-            title: "Programming Languages",
-            contents: ["Java", "Kotlin", "Dart"]
+            title: "Languages",
+            contents: ["Java", "Kotlin", "Dart", "Swift (Basic)"]
         },
         {
-            title: "Build & Toolchain",
+            title: "Build Tools",
             contents: ["Gradle", "Jenkins", "GitHub Actions", "Gerrit", "Jira"]
         }
     ],
-    languages: ["Chinese (Native)", "Japanese (JLPT N1, Business Level)"]
+    languages: ["Chinese (Native)", "Japanese (JLPT N1 - Business Level)"]
 };
 
 export default resumeData_en;

@@ -7,9 +7,9 @@ type ContactInfo = {
 }
 
 type Experience = {
-    company: string
     title: string
-    startDate: string
+    postion?: string
+    startDate?: string
     endDate?: string
     description: string[]
     projects: Project[]
@@ -40,5 +40,5 @@ type ResumeData = {
     skills: Skill[]
     languages?: string[]
     experience: Experience[]
-    personalProjects?: Project[]
+    personalProjects?: Experience[]
 }

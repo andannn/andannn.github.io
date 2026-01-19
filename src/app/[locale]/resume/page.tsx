@@ -60,8 +60,8 @@ export default async function ResumesPage({
                     </Section>
 
                     <Section title={t("ResumePage.projects")}>
-                        {resumeData.personalProjects?.map((p, idx) => (
-                            <ProjectCard key={idx} project={p}></ProjectCard>
+                        {resumeData.personalProjects?.map((exp, idx) => (
+                            <ExperienceCard experience={exp} isTimeline={true} key={idx} />
                         ))}
                     </Section>
                 </main>

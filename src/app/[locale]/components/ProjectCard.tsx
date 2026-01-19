@@ -20,9 +20,13 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                     project.name
                 )}
             </h3>
-            <div className="text-sm text-gray-500">
-                {project.startDate} - {project.endDate ?? 'Present'}
-            </div>
+
+            {(project.startDate) ? (
+                <div className="text-sm text-gray-500">
+                    {project.startDate} - {project.endDate ?? 'Present'}
+                </div>
+            ) : null}
+
             <ul className="list-disc pl-5 text-sm text-gray-700">
                 {project.description.map((line, i) => (
                     <li key={i}>{line}</li>

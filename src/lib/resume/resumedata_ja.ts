@@ -1,10 +1,10 @@
-export const resumeData_ja = {
+export const resumeData_ja: ResumeData = {
     name: "X XX",
-    title: "Android／Flutterアプリ開発エンジニア",
+    title: "Androidを主軸とするクロスプラットフォームエンジニア",
     summary:
-        "Androidアプリ開発経験は約5年。Jetpack Composeの活用に精通し、Xperiaフラッグシップ機種向けカメラアプリ開発や、dポイントアプリのFlutterクロスプラットフォーム移行プロジェクトに携わる。Flutterハイブリッド開発の知見と、コード構造や保守性を重視した設計力を持つ。",
+        "Android (Kotlin) およびFlutterにおける、大規模アプリの移行から新規立ち上げまで幅広い開発経験を有しています。プロジェクト要件に応じた最適な技術選定とアーキテクチャ設計を提供できます。特に『保守性の高いコード』にこだわりがあり、Clean Architectureや単方向データフロー(UDF)の実践経験が豊富です。現在はKotlin Multiplatform (KMP) によるロジック共有とネイティブUIの融合を研究し、次世代のモバイル開発フローを探求しています。",
     contact: {
-        email: "jqn296763005@gamil.com",
+        email: "jqn296763005@gmail.com",
         phone: "xxx-xxxx-xxxx",
         github: "https://github.com/andannn",
         website: "https://andannn.github.io/",
@@ -12,12 +12,12 @@ export const resumeData_ja = {
     },
     experience: [
         {
-            company: "信華信技術股份有限公司",
-            title: "APSE（アプリケーションシステムエンジニア）",
+            title: "株式会社ハイシンクジャパン",
+            postion: "APSE（アプリケーションシステムエンジニア）",
             startDate: "2023-08",
+            endDate: "Present",
             description: [
-                "2023年に信華信グループ（大連）に入社し、2024年に日本法人（株式会社ハイシンクジャパン）へ転籍。同一プロジェクト（dポイントアプリ）に継続して携わる。",
-                "本プロジェクトを通じてFlutterに初めて触れ、クロスプラットフォーム技術への興味を深め、自主的に学習と実践を進めている。"
+                "大規模サービスのモバイルアプリ開発案件にて、Flutterを用いたクロスプラットフォーム移行および機能実装を担当。仕様の早期把握と確実な実装により、プロジェクトの安定的な推進に貢献。"
             ],
             projects: [
                 {
@@ -26,35 +26,35 @@ export const resumeData_ja = {
                     teamSize: 50,
                     role: "開発担当",
                     startDate: "2023-08",
+                    endDate: "Present",
                     description: [
-                        "既存のAndroid（Java）およびiOS（Objective-C）アプリをFlutterに統合し、クロスプラットフォーム対応を実現。",
-                        "プロジェクト後半フェーズで参加し、既存構成の把握とスピーディなキャッチアップを行い、UIモジュール開発を担当。",
-                        "FlutterモジュールのAAR依存からソースコード依存に構成を変更する提案を行い、ビルド・デバッグ効率とチームの協業性を大幅に改善。"
+                        "既存のネイティブアプリ（Android/Java, iOS/Obj-C）をFlutterを用いたクロスプラットフォーム構成へ移行する大規模プロジェクト。",
+                        "大規模チームでの開発推進: 50名規模のプロジェクトにおいて、後半フェーズからの参画ながら迅速に既存コードと仕様をキャッチアップし、UIモジュールの実装を遂行。",
+                        "Flutterのバージョン更新に伴う技術調査を担当: ライブラリの互換性検証、廃止APIの修正、レンダリングエンジンの変更（Impeller）による影響を事前に調査・特定し、大規模アプリにおける安全なアップデート作業を遂行。"
                     ],
                     techStack: ["iOS", "Dart/Flutter", "Kotlin/Android"]
                 }
             ]
         },
         {
-            company: "東軟グループ株式会社",
-            title: "Androidアプリエンジニア",
+            title: "東軟グループ (大連)",
+            postion: "Androidアプリエンジニア",
             startDate: "2020-08",
             endDate: "2023-08",
             description: [
-                "初めての正社員としての職務。Androidプラットフォーム向けの開発に従事し、業界のベストプラクティスを習得。Kotlinに早期から触れ、現在最も得意とする言語となっている。"
+                "スマートフォンメーカー向けの開発案件にて、Androidアプリの実装を担当。機能実装にとどまらず、Jetpack Composeの導入を提案・推進し、UI開発の効率化とモダン化に貢献。"
             ],
             projects: [
                 {
                     name: "Xperia専用カメラアプリ『Photography Pro』開発",
                     link: "https://www.sony.jp/xperia/myxperia/app/photography-pro/?srsltid=AfmBOooH7otyA0OruoAZZLPt0Psz7tLIbrG21LD54owI4-6u9yZvEBzJ",
-                    role: "開発担当",
+                    role: "実装担当",
                     teamSize: 10,
                     startDate: "2020-08",
                     endDate: "2023-01",
                     description: [
-                        "Xperiaフラッグシップモデル向けのカメラアプリ開発を担当。",
-                        "85-125mmの光学ズームに対応するUIとズーム制御ロジックの実装、カメラパラメータの同期処理を担当。",
-                        "Xperia 1Vで導入されたProモードの縦横切替機能の実装を担当し、回転時のレイアウト・操作性最適化を実現。"
+                        "光学ズーム制御の実装: 85-125mm光学ズームレンズに対応するUIおよびズーム制御ロジックを実装。ハードウェア仕様に基づいた厳密なカメラパラメータ同期処理を実現。",
+                        "UI/UXの最適化: Xperia 1Vより導入されたProモードの縦横インターフェース切替機能を担当。加速度センサーと連動したレイアウトの動的変更処理を構築し、カメラとしての操作性を向上。"
                     ],
                     techStack: ["Android", "Kotlin/Java", "Jetpack AndroidX"]
                 },
@@ -66,57 +66,84 @@ export const resumeData_ja = {
                     startDate: "2023-01",
                     endDate: "2023-08",
                     description: [
-                        "Xperia 1V向けの動画編集アプリにおける編集画面を中心に開発を担当。",
-                        "開発期間が短く、高難度かつ少人数の体制だったため、一部UIにJetpack Composeを提案・採用し、保守性・開発効率を向上。",
-                        "メニュー領域をJetpack Composeで軽量に実装し、編集タイムラインは複雑なジェスチャー対応のため従来のViewで構築。"
+                        "Jetpack Composeの導入と提案: 短納期かつ少人数体制という課題に対し、UI構築の効率化を図るためJetpack Composeの採用を提案。ボイラープレートコードを削減し、開発スピード向上に寄与。",
+                        "ハイブリッド構成の設計: 複雑なジェスチャー操作やパフォーマンスが求められる「編集タイムライン」部分は従来のViewシステムを採用し、設定やメニュー画面にはComposeを採用する適材適所のアーキテクチャを設計・実装。"
                     ],
                     techStack: ["Compose Android", "Kotlin/Java", "Jetpack AndroidX"]
                 }
             ]
         },
         {
-            company: "ハルビン工業大学",
-            title: "自動化専攻",
+            title: "ハルビン工業大学",
+            postion: "自動化専攻",
             startDate: "2016-09",
             endDate: "2020-06",
-            description: ["画像位置決めと認識の研究"]
+            description: ["画像位置決めと認識の研究"],
+            projects: []
         }
     ],
     personalProjects: [
         {
-            name: "AniFlow - 非公式AniListクライアントアプリ",
-            link: "https://github.com/andannn/aniflow",
-            startDate: "2023-09",
+            title: "Flutterアプリケーション開発",
             description: [
-                "Flutterで構築したクロスプラットフォーム対応のアニメ視聴管理アプリ。AniList APIを利用し、アニメ作品の検索・評価・お気に入り登録などを実装。",
-                "Material Designに準拠したUIおよびダークモード対応、ページング読み込みを実装。AniList公式Webスタイルを参考。",
-                "Single Source of TruthとUDFの設計原則に従い、状態管理の保守性と予測性を確保。",
-                "初期はsqfliteを使用していたが、Stream API対応のためdriftに移行し、UIとのリアルタイム同期を実現。"
+                "クロスプラットフォーム技術「Flutter」の効率性と表現力を活かし、実用的なアプリケーションを開発。",
             ],
-            techStack: ["Flutter", "Dart", "GraphQL", "Bloc", "Drift/SQLite"]
+            projects: [
+                {
+                    name: "AniFlow - 非公式AniListクライアント",
+                    link: "https://github.com/andannn/aniflow",
+                    description: [
+                        "ネットワーク不安定下での利用を想定し、GraphQLによるデータ取得とSQLiteを連携させた『オフラインファースト』な同期ロジックを設計・実装。",
+                        "DriftのStream監視機能とBLoCを組み合わせることで、DBの更新が自動的にUIに流れてくるリアクティブなUDF（単方向データフロー）を構築。"
+                    ],
+                    techStack: ["Flutter", "Dart", "GraphQL", "Bloc", "Drift (SQLite)"]
+                }
+            ]
         },
         {
-            name: "Melodify - ローカル音楽プレイヤーアプリ",
-            link: "https://github.com/andannn/Melodify",
-            startDate: "2023-02",
+            title: "Kotlin Multiplatform (KMP) 技術の研究",
             description: [
-                "KotlinとJetpack Composeの学習目的で開始したローカル音楽プレイヤーアプリ。複数回のリファクタリングを経て、モジュール構成と責務分離を実現。",
-                "Room + Flow によるリアクティブなデータ駆動型UI構築。",
-                "Kotlin Multiplatform対応のため、HiltからKoinにDIフレームワークを移行。",
-                "Compose Multiplatform + Kotlin Multiplatformを導入し、iOS・Desktopへのクロスプラットフォーム対応とコード共有を実現。",
-                "Google Circuitライブラリを採用し、ViewModelに依存しない状態管理を構築。"
+                "Kotlin Multiplatform (KMP) および Compose Multiplatform (CMP) によるコード共有技術を実践。",
             ],
-            techStack: ["Android", "Compose Multiplatform", "Kotlin Multiplatform", "Media3"]
+            projects: [
+                {
+                    name: "Melodify - KMP/CMP対応 音楽プレイヤー",
+                    link: "https://github.com/andannn/Melodify",
+                    description: [
+                        "KMPからプラットフォーム固有のAPIを直接操作する際の実装パターンや、相互運用性の検証を主眼としたプロジェクト。",
+                        "AndroidのMedia3とiOSのAVPlayerを統合的に扱うなど、プラットフォーム固有機能とクロスプラットフォーム層の高度な連携を実現。"
+                    ],
+                    techStack: ["Kotlin Multiplatform", "Compose Multiplatform", "Koin", "Media3", "AVPlayer", "Room",]
+                },
+                {
+                    name: "AozoraBooks - Compose製 青空文庫リーダー",
+                    link: "https://github.com/andannn/AozoraBooks",
+                    description: [
+                        "AndroidおよびiOS両プラットフォームへのストアリリースと、公開後の継続的な保守運用を一貫して経験することを目的としたプロジェクト。",
+                        "Compose標準では非対応の『縦書き・ルビ』を実現するため、低レイヤーAPIを用いた独自のテキスト描画ロジックを構築。"
+                    ],
+                    techStack: ["Compose Multiplatform", "Kotlin Multiplatform", "Canvas API", "GitHub Actions", "Room"]
+                },
+                {
+                    name: "AniflowKMP - KMPロジック共有 & Native UI",
+                    link: "https://github.com/andannn/AniflowKMP",
+                    description: [
+                        "KMPの「ロジック共有＋ネイティブUI」アーキテクチャの実用性を検証・比較するためのプロジェクト。",
+                        "データ層・ドメイン層はKotlin Multiplatformで統一して保守性を高めつつ、UI層にはJetpack Compose (Android) とSwiftUI (iOS) を採用し、各OSに完全に最適化されたUXを追求。",
+                    ],
+                    techStack: ["Kotlin Multiplatform", "Jetpack Compose", "SwiftUI", "Ktor", "SqlDelight"]
+                }
+            ]
         }
     ],
     skills: [
         {
             title: "プラットフォーム",
-            contents: ["Android", "Flutter"]
+            contents: ["Android", "Flutter", "Kotlin Multiplatform"]
         },
         {
             title: "開発言語",
-            contents: ["Java", "Kotlin", "Dart"]
+            contents: ["Java", "Kotlin", "Dart", "Swift (Basic)"]
         },
         {
             title: "ビルド・ツール",
