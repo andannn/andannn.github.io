@@ -8,7 +8,7 @@ type ContactInfo = {
 
 type Experience = {
     title: string
-    postion?: string
+    position?: string
     startDate?: string
     endDate?: string
     description: string

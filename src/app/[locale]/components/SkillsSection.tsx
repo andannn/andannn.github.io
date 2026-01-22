@@ -6,13 +6,15 @@ type SkillsProps = {
 
 export default function SkillsSection({ skills }: SkillsProps) {
     return (
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="space-y-6">
             {skills.map((group, idx) => (
                 <div key={idx}>
-                    <h4 className="font-semibold text-gray-800 mb-1">{group.title}</h4>
+                    <h4 className="font-semibold text-gray-800 mb-2">
+                        {group.title}
+                    </h4>
                     <ul className="flex flex-wrap gap-2 text-sm text-gray-600">
                         {group.contents.map((item, i) => (
-                            <li key={i} className="bg-gray-100 px-2 py-1 rounded-md">
+                            <li key={i} className="bg-gray-100 px-3 py-1 rounded-md border border-gray-200">
                                 {item}
                             </li>
                         ))}

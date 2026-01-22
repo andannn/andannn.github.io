@@ -28,7 +28,7 @@ export default async function ResumesPage({
     const t = await getTranslations({ locale: locale });
 
     return (
-        <main className="max-w-5xl mx-auto p-8 bg-white">
+        <main className="max-w-5xl mx-auto p-8 bg-white print:p-0">
             <HeaderSection
                 name={resumeData.name}
                 title={resumeData.title}
@@ -36,8 +36,9 @@ export default async function ResumesPage({
                 avatarUrl="/images/avatar.webp"
             />
 
-            <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 xl:gap-8">
-                <aside className="lg:w-1/3 space-y-2">
+            <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 mt-8">
+
+                <aside className="lg:w-1/3 space-y-8 lg:sticky lg:top-8 lg:self-start">
                     <Section title={t("ResumePage.contact")}>
                         <ContactSection contact={resumeData.contact} />
                     </Section>
@@ -51,19 +52,21 @@ export default async function ResumesPage({
                     </Section>
                 </aside>
 
-                <main className="lg:w-2/3 space-y-2">
+                <div className="lg:w-2/3 space-y-8">
                     <Section title={t("ResumePage.experience")}>
                         {resumeData.experience.map((exp, idx) => (
                             <ExperienceCard experience={exp} isTimeline={true} key={idx} />
                         ))}
                     </Section>
 
-                    <Section title={t("ResumePage.projects")}>
-                        {resumeData.personalProjects?.map((exp, idx) => (
-                            <ExperienceCard experience={exp} isTimeline={true} key={idx} />
-                        ))}
-                    </Section>
-                </main>
+                    {resumeData.personalProjects && resumeData.personalProjects.length > 0 && (
+                        <Section title={t("ResumePage.projects")}>
+                            {resumeData.personalProjects.map((exp, idx) => (
+                                <ExperienceCard experience={exp} isTimeline={true} key={idx} />
+                            ))}
+                        </Section>
+                    )}
+                </div>
             </div>
         </main>
     )

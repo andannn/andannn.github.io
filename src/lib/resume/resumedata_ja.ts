@@ -13,10 +13,10 @@ export const resumeData_ja: ResumeData = {
     experience: [
         {
             title: "株式会社ハイシンクジャパン",
-            postion: "APSE（アプリケーションシステムエンジニア）",
+            position: "APSE（アプリケーションシステムエンジニア）",
             startDate: "2023-08",
             endDate: "Present",
-            description: "大規模サービスのモバイルアプリ開発案件にて、Flutterを用いたクロスプラットフォーム移行および機能実装を担当。仕様の早期把握と確実な実装により、プロジェクトの安定的な推進に貢献。" ,
+            description: "大規模サービスのモバイルアプリ開発案件にて、Flutterを用いたクロスプラットフォーム移行および機能実装を担当。仕様の早期把握と確実な実装により、プロジェクトの安定的な推進に貢献。",
             projects: [
                 {
                     name: "dポイントアプリのFlutter移行プロジェクト",
@@ -29,13 +29,13 @@ export const resumeData_ja: ResumeData = {
                         "既存のネイティブアプリ（Android/Java, iOS/Obj-C）をFlutterへ刷新する、大規模マイグレーション案件。",
                         "**途中参画からの即戦力化:** 後半フェーズからの参加であったが、膨大な既存コードと仕様を迅速に把握。UIモジュールの実装を遅延なく完遂し、プロジェクトの推進に貢献。",
                         "**技術的リスクの解決:** Flutterのバージョン更新に伴うライブラリの互換性や描画への影響を事前に調査。潜在的な問題を未然に特定・解消し、大規模アプリにおける安全なアップデートを実現。"],
-                    techStack: ["iOS", "Dart/Flutter", "Kotlin/Android"]
+                    techStack: ["Dart/Flutter", "Kotlin/Android", "iOS/Swift"]
                 }
             ]
         },
         {
             title: "東軟グループ (大連)",
-            postion: "Androidアプリエンジニア",
+            position: "Androidアプリエンジニア",
             startDate: "2020-08",
             endDate: "2023-08",
             description:
@@ -58,7 +58,7 @@ export const resumeData_ja: ResumeData = {
                 {
                     name: "Xperia動画編集アプリ『Video Creator』開発",
                     link: "https://play.google.com/store/apps/details?id=jp.co.sony.mc.videoeditor",
-                    role: "詳細設計、実装、テスト",
+                    role: "詳細設計、実装",
                     teamSize: "チーム規模: 6名",
                     startDate: "2023-01",
                     endDate: "2023-08",
@@ -66,13 +66,13 @@ export const resumeData_ja: ResumeData = {
                         "**Jetpack Composeの導入と提案:** 短納期かつ少人数体制という課題に対し、UI構築の効率化を図るためJetpack Composeの採用を提案。コード量を減らし、開発効率を向上。",
                         "**ハイブリッド構成の設計:** 複雑なジェスチャー操作やパフォーマンスが求められる「編集タイムライン」部分は従来のViewシステムを採用し、設定やメニュー画面にはComposeを採用する適材適所のアーキテクチャを設計・実装。"
                     ],
-                    techStack: ["Compose Android", "Kotlin/Java", "Jetpack AndroidX"]
+                    techStack: ["Jetpack Compose", "Kotlin", "Jetpack AndroidX"]
                 }
             ]
         },
         {
             title: "ハルビン工業大学",
-            postion: "自動化専攻",
+            position: "自動化専攻",
             startDate: "2016-09",
             endDate: "2020-06",
             description: "画像位置決めと認識の研究",
@@ -133,16 +133,21 @@ export const resumeData_ja: ResumeData = {
     ],
     skills: [
         {
-            title: "プラットフォーム",
-            contents: ["Android", "Flutter", "Kotlin Multiplatform"]
+            title: "言語",
+            contents: ["Kotlin", "Dart", "Java", "Swift (Basic)"]
         },
         {
-            title: "開発言語",
-            contents: ["Java", "Kotlin", "Dart", "Swift (Basic)"]
+            title: "フレームワーク・ライブラリ",
+            contents: [
+                "Android",
+                "Jetpack Compose",
+                "Flutter",
+                "Kotlin Multiplatform (KMP)"
+            ]
         },
         {
-            title: "ビルド・ツール",
-            contents: ["Gradle", "Jenkins", "GitHub Actions", "Gerrit", "Jira"]
+            title: "ツール・CI/CD",
+            contents: ["Gradle", "GitHub Actions", "Jenkins", "Gerrit", "Jira", "Android Studio"]
         }
     ],
     languages: ["中国語（ネイティブ）", "日本語（N1・ビジネスレベル）"]

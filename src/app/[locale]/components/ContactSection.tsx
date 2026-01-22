@@ -10,29 +10,37 @@ type ContactSectionProps = {
   contact: ContactInfo;
 };
 
+// URLから https:// や www. を取り除くヘルパー関数
+const formatUrlDisplay = (url: string) => {
+  return url.replace(/^https?:\/\//, '').replace(/^www\./, '').replace(/\/$/, '');
+};
+
 function ContactItem({
   icon: Icon,
-  value,
+  text,
   href,
 }: {
   icon: React.ElementType;
-  value: string;
+  text: string;
   href?: string;
 }) {
   return (
-    <li className="flex items-center gap-2">
-      <Icon className="w-4 h-4 text-gray-600" />
+    <li className="flex items-center gap-3">
+      {/* アイコンのサイズを少し調整し、縮まないように flex-shrink-0 を追加 */}
+      <Icon className="w-4 h-4 text-gray-500 flex-shrink-0" />
+      
       {href ? (
         <a
           href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-600 underline"
+          target={href.startsWith("http") ? "_blank" : undefined} // tel: や mailto: は _blank にしない
+          rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+          // デフォルトはグレー、ホバーで青色＋下線にする（モダンなUI）
+          className="text-gray-700 hover:text-blue-600 hover:underline transition-colors break-all"
         >
-          {value}
+          {text}
         </a>
       ) : (
-        <span>{value}</span>
+        <span className="text-gray-700">{text}</span>
       )}
     </li>
   );
@@ -40,33 +48,44 @@ function ContactItem({
 
 export default function ContactSection({ contact }: ContactSectionProps) {
   return (
-    <ul className="space-y-2 text-sm text-gray-700">
+    // 左側の余白(pl-1)を少し足してアイコンの位置バランスを整える
+    <ul className="space-y-3 text-sm"> 
+      {contact.location && (
+        <ContactItem icon={MapPin} text={contact.location} />
+      )}
+      
       {contact.email && (
         <ContactItem
           icon={Mail}
-          value={contact.email}
+          text={contact.email}
           href={`mailto:${contact.email}`}
         />
       )}
+      
       {contact.phone && (
-        <ContactItem icon={Phone} value={contact.phone} />
+        <ContactItem 
+            icon={Phone} 
+            text={contact.phone} 
+            // 数字以外（ハイフンやスペース）を取り除いて tel: リンクにする
+            href={`tel:${contact.phone.replace(/[^\d+]/g, '')}`} 
+        />
       )}
+      
       {contact.github && (
         <ContactItem
           icon={Github}
-          value={contact.github}
+          // 表示は短く（github.com/...）、リンクはそのまま
+          text={formatUrlDisplay(contact.github)}
           href={contact.github}
         />
       )}
+      
       {contact.website && (
         <ContactItem
           icon={Globe}
-          value={contact.website}
+          text={formatUrlDisplay(contact.website)}
           href={contact.website}
         />
-      )}
-      {contact.location && (
-        <ContactItem icon={MapPin} value={contact.location} />
       )}
     </ul>
   );

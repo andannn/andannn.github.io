@@ -23,8 +23,8 @@ export default function ExperienceCard({
             <div className="pl-4">
                 <h3 className="text-xl font-semibold text-gray-800">{experience.title}</h3>
                 <div className="text-sm text-gray-600">
-                    {experience.postion && (
-                        <span>{experience.postion} ｜ </span>
+                    {experience.position && (
+                        <span>{experience.position} ｜ </span>
                     )}
                     {(experience.startDate) ? (
                         <>
