@@ -16,22 +16,20 @@ export const resumeData_ja: ResumeData = {
             postion: "APSE（アプリケーションシステムエンジニア）",
             startDate: "2023-08",
             endDate: "Present",
-            description: [
-                "大規模サービスのモバイルアプリ開発案件にて、Flutterを用いたクロスプラットフォーム移行および機能実装を担当。仕様の早期把握と確実な実装により、プロジェクトの安定的な推進に貢献。"
-            ],
+            description: "大規模サービスのモバイルアプリ開発案件にて、Flutterを用いたクロスプラットフォーム移行および機能実装を担当。仕様の早期把握と確実な実装により、プロジェクトの安定的な推進に貢献。"
+            ,
             projects: [
                 {
                     name: "dポイントアプリのFlutter移行プロジェクト",
                     link: "https://play.google.com/store/apps/details?id=com.nttdocomo.android.dpoint",
-                    teamSize: 50,
-                    role: "開発担当",
+                    teamSize: "チーム規模: 50名",
+                    role: "Flutterエンジニア",
                     startDate: "2023-08",
                     endDate: "Present",
                     description: [
-                        "既存のネイティブアプリ（Android/Java, iOS/Obj-C）をFlutterを用いたクロスプラットフォーム構成へ移行する大規模プロジェクト。",
-                        "大規模チームでの開発推進: 50名規模のプロジェクトにおいて、後半フェーズからの参画ながら迅速に既存コードと仕様をキャッチアップし、UIモジュールの実装を遂行。",
-                        "Flutterのバージョン更新に伴う技術調査を担当: ライブラリの互換性検証、廃止APIの修正、レンダリングエンジンの変更（Impeller）による影響を事前に調査・特定し、大規模アプリにおける安全なアップデート作業を遂行。"
-                    ],
+                        "既存のネイティブアプリ（Android/Java, iOS/Obj-C）をFlutterへ刷新する、大規模マイグレーション案件。",
+                        "**途中参画からの即戦力化:** 後半フェーズからの参加であったが、膨大な既存コードと仕様を迅速に把握。UIモジュールの実装を遅延なく完遂し、プロジェクトの推進に貢献。",
+                        "**技術的リスクの解決:** Flutterのバージョン更新に伴うライブラリの互換性や描画への影響を事前に調査。潜在的な問題を未然に特定・解消し、大規模アプリにおける安全なアップデートを実現。"],
                     techStack: ["iOS", "Dart/Flutter", "Kotlin/Android"]
                 }
             ]
@@ -41,15 +39,15 @@ export const resumeData_ja: ResumeData = {
             postion: "Androidアプリエンジニア",
             startDate: "2020-08",
             endDate: "2023-08",
-            description: [
+            description:
                 "スマートフォンメーカー向けの開発案件にて、Androidアプリの実装を担当。機能実装にとどまらず、Jetpack Composeの導入を提案・推進し、UI開発の効率化とモダン化に貢献。"
-            ],
+            ,
             projects: [
                 {
                     name: "Xperia専用カメラアプリ『Photography Pro』開発",
                     link: "https://www.sony.jp/xperia/myxperia/app/photography-pro/?srsltid=AfmBOooH7otyA0OruoAZZLPt0Psz7tLIbrG21LD54owI4-6u9yZvEBzJ",
-                    role: "実装担当",
-                    teamSize: 10,
+                    role: "Androidエンジニア",
+                    teamSize: "チーム規模: 10名",
                     startDate: "2020-08",
                     endDate: "2023-01",
                     description: [
@@ -61,8 +59,8 @@ export const resumeData_ja: ResumeData = {
                 {
                     name: "Xperia動画編集アプリ『Video Creator』開発",
                     link: "https://play.google.com/store/apps/details?id=jp.co.sony.mc.videoeditor",
-                    role: "設計・開発担当",
-                    teamSize: 6,
+                    role: "Androidエンジニア",
+                    teamSize: "チーム規模: 6名",
                     startDate: "2023-01",
                     endDate: "2023-08",
                     description: [
@@ -78,16 +76,15 @@ export const resumeData_ja: ResumeData = {
             postion: "自動化専攻",
             startDate: "2016-09",
             endDate: "2020-06",
-            description: ["画像位置決めと認識の研究"],
+            description: "画像位置決めと認識の研究",
             projects: []
         }
     ],
     personalProjects: [
         {
             title: "Flutterアプリケーション開発",
-            description: [
+            description:
                 "クロスプラットフォーム技術「Flutter」の効率性と表現力を活かし、実用的なアプリケーションを開発。",
-            ],
             projects: [
                 {
                     name: "AniFlow - 非公式AniListクライアント",
@@ -102,9 +99,8 @@ export const resumeData_ja: ResumeData = {
         },
         {
             title: "Kotlin Multiplatform (KMP) 技術の研究",
-            description: [
+            description:
                 "Kotlin Multiplatform (KMP) および Compose Multiplatform (CMP) によるコード共有技術を実践。",
-            ],
             projects: [
                 {
                     name: "Melodify - KMP/CMP対応 音楽プレイヤー",

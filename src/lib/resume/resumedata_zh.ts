@@ -16,14 +16,13 @@ export const resumeData_zh: ResumeData = {
             postion: "APSE (应用程序系统工程师)",
             startDate: "2023-08",
             endDate: "Present",
-            description: [
-                "参与拥有 9,000 万会员规模的“dPoint Club”应用的 Flutter 迁移项目。虽在开发后期阶段加入，但迅速掌握现有规格并负责核心功能的实现。"
-            ],
+            description:
+                "参与拥有 9,000 万会员规模的“dPoint Club”应用的 Flutter 迁移项目。虽在开发后期阶段加入，但迅速掌握现有规格并负责核心功能的实现。",
             projects: [
                 {
                     name: "d Point App Flutter 迁移项目",
                     link: "https://play.google.com/store/apps/details?id=com.nttdocomo.android.dpoint",
-                    teamSize: 50,
+                    teamSize: "50",
                     role: "开发担当",
                     startDate: "2023-08",
                     endDate: "Present",
@@ -41,15 +40,14 @@ export const resumeData_zh: ResumeData = {
             postion: "Android 应用开发工程师",
             startDate: "2020-08",
             endDate: "2023-08",
-            description: [
-                "从事面向全球市场的旗舰智能手机（Sony Xperia）原生相机及视频编辑应用的开发。发挥在 Kotlin 现代化 Android 开发方面的优势，在从零开发的新应用中主导引入 Jetpack Compose，为减少开发工时与提升可维护性做出了贡献。"
-            ],
+            description:
+                "从事面向全球市场的旗舰智能手机（Sony Xperia）原生相机及视频编辑应用的开发。发挥在 Kotlin 现代化 Android 开发方面的优势，在从零开发的新应用中主导引入 Jetpack Compose，为减少开发工时与提升可维护性做出了贡献。",
             projects: [
                 {
                     name: "Xperia 专用相机应用《Photography Pro》开发",
                     link: "https://www.sony.jp/xperia/myxperia/app/photography-pro/?srsltid=AfmBOooH7otyA0OruoAZZLPt0Psz7tLIbrG21LD54owI4-6u9yZvEBzJ",
                     role: "实装担当",
-                    teamSize: 10,
+                    teamSize: "10",
                     startDate: "2020-08",
                     endDate: "2023-01",
                     description: [
@@ -63,7 +61,7 @@ export const resumeData_zh: ResumeData = {
                     name: "Xperia 视频编辑应用《Video Creator》开发",
                     link: "https://play.google.com/store/apps/details?id=jp.co.sony.mc.videoeditor",
                     role: "设计与开发担当",
-                    teamSize: 6,
+                    teamSize: "6",
                     startDate: "2023-01",
                     endDate: "2023-08",
                     description: [
@@ -80,17 +78,15 @@ export const resumeData_zh: ResumeData = {
             postion: "自动化专业",
             startDate: "2016-09",
             endDate: "2020-06",
-            description: ["图像定位与识别的研究"],
+            description: "图像定位与识别的研究",
             projects: []
         }
     ],
     personalProjects: [
         {
             title: "Flutter 应用程序开发",
-            description: [
+            description:
                 "利用跨平台技术“Flutter”的高效率与表现力，开发具有实用价值的应用程序。",
-                "此外，通过实验性项目持续追踪框架的最新动态（Master Channel），以此预判未来的技术趋势。"
-            ],
             projects: [
                 {
                     name: "AniFlow - 非官方 AniList 客户端",
@@ -105,9 +101,8 @@ export const resumeData_zh: ResumeData = {
         },
         {
             title: "Kotlin Multiplatform (KMP) 技术研究",
-            description: [
+            description:
                 "在深化 Android 原生开发能力的同时，实践基于 Kotlin Multiplatform (KMP) 和 Compose Multiplatform (CMP) 的代码共享技术。",
-            ],
             projects: [
                 {
                     name: "Melodify - KMP/CMP 音乐播放器",

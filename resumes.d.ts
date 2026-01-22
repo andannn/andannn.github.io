@@ -11,7 +11,7 @@ type Experience = {
     postion?: string
     startDate?: string
     endDate?: string
-    description: string[]
+    description: string
     projects: Project[]
 }
 
@@ -20,7 +20,7 @@ type Project = {
     link?: string
     description: string[]
     role?: string
-    teamSize?: int
+    teamSize?: string
     startDate?: string
     endDate?: string
     techStack?: string[]

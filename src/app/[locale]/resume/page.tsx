@@ -1,7 +1,6 @@
 import ExperienceCard from "../components/ExperienceCard";
 import Section from "../components/Section";
 import SkillsSection from "../components/SkillsSection";
-import ProjectCard from "../components/ProjectCard";
 import LanguageSection from "../components/LanguageSection";
 import ContactSection from "../components/ContactSection";
 import HeaderSection from "../components/HeaderSection";

@@ -16,14 +16,13 @@ export const resumeData_en: ResumeData = {
             postion: "APSE (Application System Engineer)",
             startDate: "2023-08",
             endDate: "Present",
-            description: [
-                "Participated in the Flutter migration project for the 'd Point Club' app, which boasts 90 million members. Although joining in the later phase, I quickly grasped the specifications and took charge of implementation."
-            ],
+            description:
+                "Participated in the Flutter migration project for the 'd Point Club' app, which boasts 90 million members. Although joining in the later phase, I quickly grasped the specifications and took charge of implementation.",
             projects: [
                 {
                     name: "d Point App Flutter Migration Project",
                     link: "https://play.google.com/store/apps/details?id=com.nttdocomo.android.dpoint",
-                    teamSize: 50,
+                    teamSize: "50",
                     role: "Developer",
                     startDate: "2023-08",
                     endDate: "Present",
@@ -41,15 +40,14 @@ export const resumeData_en: ResumeData = {
             postion: "Android Application Engineer",
             startDate: "2020-08",
             endDate: "2023-08",
-            description: [
-                "Engaged in the development of genuine camera and video editing apps for global flagship smartphones (Sony Xperia). Leveraged strong expertise in modern Android development using Kotlin to propose and lead the adoption of Jetpack Compose in new app development, contributing to reduced development man-hours and improved maintainability."
-            ],
+            description:
+                "Engaged in the development of genuine camera and video editing apps for global flagship smartphones (Sony Xperia). Leveraged strong expertise in modern Android development using Kotlin to propose and lead the adoption of Jetpack Compose in new app development, contributing to reduced development man-hours and improved maintainability.",
             projects: [
                 {
                     name: "Xperia Camera App 'Photography Pro' Development",
                     link: "https://www.sony.jp/xperia/myxperia/app/photography-pro/?srsltid=AfmBOooH7otyA0OruoAZZLPt0Psz7tLIbrG21LD54owI4-6u9yZvEBzJ",
                     role: "Implementation Lead",
-                    teamSize: 10,
+                    teamSize: "10",
                     startDate: "2020-08",
                     endDate: "2023-01",
                     description: [
@@ -63,7 +61,7 @@ export const resumeData_en: ResumeData = {
                     name: "Xperia Video Editor 'Video Creator' Development",
                     link: "https://play.google.com/store/apps/details?id=jp.co.sony.mc.videoeditor",
                     role: "Design & Development",
-                    teamSize: 6,
+                    teamSize: "6",
                     startDate: "2023-01",
                     endDate: "2023-08",
                     description: [
@@ -80,17 +78,15 @@ export const resumeData_en: ResumeData = {
             postion: "Automation",
             startDate: "2016-09",
             endDate: "2020-06",
-            description: ["Research on image positioning and recognition"],
+            description: "Research on image positioning and recognition",
             projects: []
         }
     ],
     personalProjects: [
         {
             title: "Flutter Application Development",
-            description: [
-                "Developing practical applications leveraging the efficiency and expressiveness of the cross-platform technology 'Flutter'.",
-                "Additionally, actively tracking the latest framework trends (Master Channel) through experimental projects to anticipate future technical trends."
-            ],
+            description:
+                "Additionally, actively tracking the latest framework trends (Master Channel) through experimental projects to anticipate future technical trends.",
             projects: [
                 {
                     name: "AniFlow - Unofficial AniList Client",
@@ -105,9 +101,8 @@ export const resumeData_en: ResumeData = {
         },
         {
             title: "Kotlin Multiplatform (KMP) Research",
-            description: [
+            description:
                 "In addition to deepening Android Native skills, practicing code sharing technologies using Kotlin Multiplatform (KMP) and Compose Multiplatform (CMP).",
-            ],
             projects: [
                 {
                     name: "Melodify - KMP/CMP Music Player",

@@ -32,10 +32,8 @@ export default function ExperienceCard({
                         </>
                     ) : null}
                 </div>
-                <ul className="list-disc pl-5 text-sm text-gray-700 mt-2">
-                    {experience.description.map((line, i) => (
-                        <li key={i}>{line}</li>
-                    ))}
+                <ul className="text-sm text-gray-700 mt-2">
+                    <li key={"desc"}>{experience.description}</li>
                 </ul>
 
                 {experience.projects?.length ? (
