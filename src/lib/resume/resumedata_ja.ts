@@ -16,14 +16,13 @@ export const resumeData_ja: ResumeData = {
             postion: "APSE（アプリケーションシステムエンジニア）",
             startDate: "2023-08",
             endDate: "Present",
-            description: "大規模サービスのモバイルアプリ開発案件にて、Flutterを用いたクロスプラットフォーム移行および機能実装を担当。仕様の早期把握と確実な実装により、プロジェクトの安定的な推進に貢献。"
-            ,
+            description: "大規模サービスのモバイルアプリ開発案件にて、Flutterを用いたクロスプラットフォーム移行および機能実装を担当。仕様の早期把握と確実な実装により、プロジェクトの安定的な推進に貢献。" ,
             projects: [
                 {
                     name: "dポイントアプリのFlutter移行プロジェクト",
                     link: "https://play.google.com/store/apps/details?id=com.nttdocomo.android.dpoint",
                     teamSize: "チーム規模: 50名",
-                    role: "Flutterエンジニア",
+                    role: "詳細設計、実装",
                     startDate: "2023-08",
                     endDate: "Present",
                     description: [
@@ -46,26 +45,26 @@ export const resumeData_ja: ResumeData = {
                 {
                     name: "Xperia専用カメラアプリ『Photography Pro』開発",
                     link: "https://www.sony.jp/xperia/myxperia/app/photography-pro/?srsltid=AfmBOooH7otyA0OruoAZZLPt0Psz7tLIbrG21LD54owI4-6u9yZvEBzJ",
-                    role: "Androidエンジニア",
+                    role: "実装、テスト",
                     teamSize: "チーム規模: 10名",
                     startDate: "2020-08",
                     endDate: "2023-01",
                     description: [
-                        "光学ズーム制御の実装: 85-125mm光学ズームレンズに対応するUIおよびズーム制御ロジックを実装。ハードウェア仕様に基づいた厳密なカメラパラメータ同期処理を実現。",
-                        "UI/UXの最適化: Xperia 1Vより導入されたProモードの縦横インターフェース切替機能を担当。加速度センサーと連動したレイアウトの動的変更処理を構築し、カメラとしての操作性を向上。"
+                        "**品質維持・向上:** 既存機能の改修および不具合修正を担当。報告された事象に対し迅速に原因を特定・修正し、商用アプリとしての動作安定化に貢献。",
+                        "**UI/UX機能の実装:** Xperia 1V向けProモードの縦横UI切替を担当。機能追加の前に、複雑な既存コードのリファクタリングを実施。バグを最小限に抑え、スムーズなリリースを実現。"
                     ],
                     techStack: ["Android", "Kotlin/Java", "Jetpack AndroidX"]
                 },
                 {
                     name: "Xperia動画編集アプリ『Video Creator』開発",
                     link: "https://play.google.com/store/apps/details?id=jp.co.sony.mc.videoeditor",
-                    role: "Androidエンジニア",
+                    role: "詳細設計、実装、テスト",
                     teamSize: "チーム規模: 6名",
                     startDate: "2023-01",
                     endDate: "2023-08",
                     description: [
-                        "Jetpack Composeの導入と提案: 短納期かつ少人数体制という課題に対し、UI構築の効率化を図るためJetpack Composeの採用を提案。ボイラープレートコードを削減し、開発スピード向上に寄与。",
-                        "ハイブリッド構成の設計: 複雑なジェスチャー操作やパフォーマンスが求められる「編集タイムライン」部分は従来のViewシステムを採用し、設定やメニュー画面にはComposeを採用する適材適所のアーキテクチャを設計・実装。"
+                        "**Jetpack Composeの導入と提案:** 短納期かつ少人数体制という課題に対し、UI構築の効率化を図るためJetpack Composeの採用を提案。コード量を減らし、開発効率を向上。",
+                        "**ハイブリッド構成の設計:** 複雑なジェスチャー操作やパフォーマンスが求められる「編集タイムライン」部分は従来のViewシステムを採用し、設定やメニュー画面にはComposeを採用する適材適所のアーキテクチャを設計・実装。"
                     ],
                     techStack: ["Compose Android", "Kotlin/Java", "Jetpack AndroidX"]
                 }
